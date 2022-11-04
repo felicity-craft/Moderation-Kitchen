@@ -1,0 +1,52 @@
+@using MatBlazor;
+
+<div class="search-container">
+    <div class="category-container">
+        <p class="search">By Category</p>
+        <MatSelectItem @bind-Value="value3" Items="@value3Items" Label="Select category" Outlined="true"
+            Style="background-color:white">
+            <ItemTemplate>
+                <span>@context?.Name</span>
+            </ItemTemplate>
+        </MatSelectItem>
+    </div>
+    <div class="category-container">
+        <p class="search">Search the blog</p>
+        <MatTextField @bind-Value="@MyString3" Label="Search" Icon="search" IconTrailing="true" Outlined="true"
+            Style="background-color:white"></MatTextField>
+    </div>
+</div>
+
+@code {
+
+    ItemType value3;
+
+    ItemType[] value3Items = new[]
+    {
+        new ItemType("Easy"),
+        new ItemType("Chocolate"),
+        new ItemType("Cookies"),
+    };
+
+    class ItemType
+    {
+        public string Name { get; }
+
+        public ItemType(string name)
+        {
+            Name = name;
+        }
+    }
+
+    public string MyString3
+    {
+        get => _myString3;
+        set
+        {
+            _myString3 = value;
+            this.StateHasChanged();
+        }
+    }
+
+    private string _myString3;
+}

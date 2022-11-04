@@ -1,0 +1,45 @@
+.social-media-call-container {
+    background-color: rgb(255, 219, 207, 0.6);
+    border-radius: 13px;
+    width: calc(100% - 40px);
+    display: flex;
+    align-content: center;
+    padding: 20px;
+}
+
+.social-media-call-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-media-call-logo {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 120px;
+    height: 120px;
+}
+
+.recipe-card-image {
+    border: 8px rgb(163, 106, 114, 0.6);
+    border-style: solid;
+    border-radius: 50%;
+    object-fit: cover;
+    width: 230px;
+    height: 230px;
+}
+
+h3{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+p{
+    margin-bottom: 0px;
+}

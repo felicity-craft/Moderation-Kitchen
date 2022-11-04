@@ -1,0 +1,40 @@
+.page-container {
+  background-color: white;
+  padding: 16px;
+  border-radius: 0px 13px 13px 13px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.page-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 85px 95px;
+  gap: 20px;
+}
+
+.recipe-hero-image {
+  width: 80%;
+  height: auto;
+}
+
+.recipe-card-image{
+  border: 8px rgb(163, 106, 114, 0.6);
+  border-style: solid;
+  border-radius: 50%;
+  object-fit: cover;
+  width: 230px;
+  height: 230px;
+}
+
+.button-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+

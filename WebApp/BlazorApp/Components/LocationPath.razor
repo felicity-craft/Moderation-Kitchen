@@ -1,0 +1,47 @@
+@namespace BlazorApp.Components
+
+<div class="location-path-container">
+    <ul class="breadcrumb">
+        @foreach (var breadcrumb in Breadcrumbs)
+        {
+            <li><a href="@breadcrumb.Path">@breadcrumb.Text</a></li>
+        }
+    </ul>
+</div>
+
+@code{
+
+    private List<BreadcrumbItem> Breadcrumbs { get; set; } = new();
+
+    [Parameter]
+    public string Path { get; set; } = "";
+
+    class BreadcrumbItem
+    {
+        public string Path { get; set; }
+        public string Text { get; set; }
+    }
+
+    protected override void OnInitialized()
+    {
+        this.BuildBreadcrumbs();
+    }
+
+    private void BuildBreadcrumbs()
+    {
+        var subPaths = Path.Split("/");
+        Breadcrumbs.Clear();
+
+        var path = "/";
+        var isHome = true;
+        foreach (var subPath in subPaths)
+        {
+            path += $"{subPath}/";
+            Breadcrumbs.Add(new BreadcrumbItem{
+                Path = path,
+                Text = isHome ? "home" : subPath.Replace("-", " "),
+            });
+            isHome = false;
+        }
+    }
+}

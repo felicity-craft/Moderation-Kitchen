@@ -1,5 +1,4 @@
 .page-container {
-    margin: 150px 105px;
     background-color: white;
     padding: 16px;
     border-radius: 13px;
@@ -28,4 +27,15 @@
     padding: 20px;
     text-align: center;
     border-radius: 13px;
+    transition: ease 0.5s;
 }
+
+.caption:hover{
+    background-color: rgba(255, 255, 255, 1);
+}
+
+a:link, a:visited, a:link:active, a:visited:active {
+    color: black;
+    cursor: pointer;
+  }
+  

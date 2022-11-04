@@ -1,0 +1,58 @@
+@namespace BlazorApp.Components.RecipePage
+
+@using MatBlazor;
+
+<div class="recipe-comment-container">
+    <h3>Leave a reply</h3>
+    <p>Your email address will not be published. Required fields are marked *</p>
+    <p>Rate this recipe</p>
+    <div class="recipe-rate-me-container">
+        <span class="material-symbols-outlined checked">star</span>
+        <span class="material-symbols-outlined checked">star</span>
+        <span class="material-symbols-outlined checked">star</span>
+        <span class="material-symbols-outlined checked">star</span>
+        <span class="material-symbols-outlined checked">star</span>
+    </div>
+    <form>
+        <div class="comment-input-container">
+            <MatTextField @bind-Value="@MyString9" Label="Comment" TextArea="true" FullWidth="true"></MatTextField>
+            <MatTextField @bind-Value="@MyString8" Label="Name" Required="true" Style="width:100%"></MatTextField>
+            <MatTextField @bind-Value="@MyString8" Label="Email" Required="true" Style="width:100%"></MatTextField>
+            <MatCheckbox @bind-Value="@checked1" Label="Save my name, email, and website in this browser for the next time I comment"></MatCheckbox>
+            <Button>Post Comment</Button>
+        </div>
+    </form>
+    <h3>1 comment on "Chocolate chunk cookies"</h3>
+    <hr>
+    <p>HEATHER I. ⦁ OCTOBER 26, 2022</p>
+    <p>I love refrigerating my dough, too. These cookies look amazing. I'm trying these out very soon.</p>
+</div>
+
+@code {
+
+    public string MyString8
+    {
+        get => _myString8;
+        set
+        {
+            _myString8 = value;
+            this.StateHasChanged();
+        }
+    }
+
+    private string _myString8;
+
+    public string MyString9
+    {
+        get => _myString9;
+        set
+        {
+            _myString9 = value;
+            this.StateHasChanged();
+        }
+    }
+    private string _myString9;
+
+    bool checked1 = true;
+
+}

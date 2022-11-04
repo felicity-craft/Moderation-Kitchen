@@ -1,0 +1,24 @@
+@using BlazorApp.Components;
+@using MatBlazor;
+
+@page "/recipe-index"
+
+<PageTitle>Recipe index</PageTitle>
+
+<LocationPath Path="/recipe-index" />
+
+<div class="page-container">
+    <div class="page-content-container">
+        <div class="recipe-search-container">
+            <h2>Recipe index</h2>
+            <RecipeSearchContainer/>
+        </div>
+        <div class="featured-container">
+            <h4>Featured</h4>
+            <IndexFeaturedImages/>
+            <Button Href="recipes-list" TrailingIcon="double_arrow">See more</Button>
+        </div>
+    </div>
+</div>
+
+

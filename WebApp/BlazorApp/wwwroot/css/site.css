@@ -1,11 +1,14 @@
-@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
-html, body {
+html, body, input {
     font-family: Rubik, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+
+html, body{
     background-color: #DEC2BA;
 }
 
-a.navbar-brand{
+a.navbar-brand {
     white-space: normal;
     text-align: center;
     word-break: break-all;
@@ -15,14 +18,14 @@ h1:focus {
     outline: none;
 }
 
-a, .btn-link {
-    color: #0071c1;
+a {
+    color: black;
+    text-decoration: none;
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+a:hover {
+    color: #FFDBCF;
+    text-decoration: none;
 }
 
 .content {
@@ -69,3 +72,66 @@ a, .btn-link {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
+
+h2{
+    color: #FFDBCF;
+    font-size: 60px;
+    text-align: center;
+    font-weight: 100;
+    letter-spacing: -0.5px;
+    margin: 0px;
+}
+
+h4{
+    color: #FFDBCF;
+    font-size: 34px;
+    text-align: center;
+    font-weight: 100;
+    letter-spacing: -0.25px;
+    margin: 0px;
+    text-transform: uppercase;
+}
+
+hr{
+    height: 3px;
+    width: 100%;
+    background-color: #A36A72;
+    border-width: 0px;
+}
+
+.material-symbols-outlined.filled {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48;
+}
+
+ul{
+    list-style-type: circle;
+}
+
+li {
+    margin: 8px;
+}
+
+h3{
+    color: black;
+    font-size: 28px;
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: -0.23px;
+    text-align: left;
+    margin-top: 42px;
+    margin-bottom: 20px;
+}
+
+textarea{
+    border-radius: 5px;
+    border-color: lightgray;
+}
+
+input[type=checkbox]{
+    border-radius: 5px;
+    border-color: lightgray;
+}

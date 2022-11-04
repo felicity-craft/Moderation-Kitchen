@@ -1,0 +1,38 @@
+@namespace BlazorApp.Components
+
+<a href="@Href" style="@Style()">
+    @if (Icon != null)
+    {
+        <span class="material-icons mdc-button__icon">@Icon</span>
+    }
+    @ChildContent
+    @if (TrailingIcon != null)
+    {
+        <span class="material-icons mdc-button__icon">@TrailingIcon</span>
+    }
+</a>
+
+@code{
+    [Parameter]
+    public RenderFragment ChildContent {get; set;}
+
+    [Parameter]
+    public string Href {get; set;}
+
+    [Parameter]
+    public string Icon {get; set;}
+
+    [Parameter]
+    public string TrailingIcon {get; set;}
+
+
+    private string Style()
+    {
+        if (Icon is null && TrailingIcon is null)
+        {
+            return "";
+        }
+        return "padding-left:16px; padding-right:16px";
+    }
+
+}

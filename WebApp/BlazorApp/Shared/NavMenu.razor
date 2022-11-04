@@ -1,26 +1,26 @@
-﻿@using MatBlazor;
+﻿@inject NavigationManager NavigationManager;
+@using MatBlazor;
 
-<nav>
-    <div class="header-container">
-        <div class="socials-container">
-            <img class="socials-icon" src="/assets/images/facebook.png" />
-            <img class="socials-icon" src="/assets/images/instagram.png" />
-            <img class="socials-icon" src="/assets/images/pinterest.png" />
-        </div>
-        <div class="search-container">
-            <input class="search-input" type="text" placeholder="Search" />
-            <div class="search-icon-container">
-                <span class="material-symbols-outlined">search</span>
-            </div>
+<div class="header-container">
+    <div class="socials-container">
+        <img class="socials-icon" src="/assets/images/facebook.png" />
+        <img class="socials-icon" src="/assets/images/instagram.png" />
+        <img class="socials-icon" src="/assets/images/pinterest.png" />
+    </div>
+    <div class="search-container">
+        <input class="search-input" type="text" placeholder="Search" />
+        <div class="search-icon-container">
+            <span class="material-symbols-outlined">search</span>
         </div>
     </div>
-</nav>
+</div>
+
 
 <img class="logo" src="/assets/images/logo.png" width="300px" />
 <div class="menu-container">
-    <div>
-        <MatButton Style="height: 58px">Home</MatButton>
-        <MatButton Style="height: 58px">Recipe Index</MatButton>
+    <div class="menu-button-container">
+        <a href="/" class="menu-button">Home</a>
+        <a href="/recipe-index" class="menu-button">Recipe Index</a>
     </div>
 </div>
 

@@ -1,0 +1,43 @@
+@using BlazorApp.Components;
+@using MatBlazor;
+
+@page "/admin/login"
+
+<PageTitle>Admin login</PageTitle>
+
+<LocationPath Path="/admin/login" />
+
+<div class="page-container">
+    <div class="page-content-container">
+        <MatTextField @bind-Value="@MyString3" Label="Email" Outlined="true" Style="width:250px" Required="true"></MatTextField>
+        <MatTextField @bind-Value="@MyString3" Label="Password" Outlined="true" Style="width:250px" Required="true"></MatTextField>
+        <Button Href="admin-home" >Login</Button>
+    </div>
+</div>
+
+@code {
+
+
+
+    class ItemType
+    {
+        public string Name { get; }
+
+        public ItemType(string name)
+        {
+            Name = name;
+        }
+    }
+
+    public string MyString3
+    {
+        get => _myString3;
+        set
+        {
+            _myString3 = value;
+            this.StateHasChanged();
+        }
+    }
+
+    private string _myString3;
+}

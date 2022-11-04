@@ -1,0 +1,10 @@
+.checked {
+    color: #F8CD00;
+}
+
+.recipe-rating-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
