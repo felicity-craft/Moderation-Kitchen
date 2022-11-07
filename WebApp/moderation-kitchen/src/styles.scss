@@ -13,6 +13,10 @@
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons+Outlined';
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
      
+html, body{
+  background-color: #DEC2BA;
+}
+
 $fontConfig: (
   display-4: mat.define-typography-level(112px, 112px, 300, 'Rubik', -0.0134em),
   display-3: mat.define-typography-level(56px, 56px, 400, 'Rubik', -0.0089em),
