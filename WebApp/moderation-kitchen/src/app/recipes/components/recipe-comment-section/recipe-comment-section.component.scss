@@ -1,0 +1,21 @@
+.recipe-comment-container {
+    display: flex;
+    text-align: left;
+    width: 100%;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.comment-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.full-width{
+    width: 100%;
+}
+
+:host{
+    width: 100%;
+}

@@ -12,9 +12,54 @@
 // Fonts
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons+Outlined';
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
-     
+
 html, body{
   background-color: #DEC2BA;
+}
+
+h2{
+  color: #FFDBCF;
+  font-size: 60px;
+  text-align: center;
+  font-weight: 100;
+  letter-spacing: -0.5px;
+  margin: 0px;
+}
+
+h3{
+  color: black;
+  font-size: 28px;
+  text-transform: uppercase;
+  font-weight: 100;
+  letter-spacing: -0.23px;
+  text-align: left;
+  margin-top: 42px;
+  margin-bottom: 20px;
+}
+
+h4{
+  color: #FFDBCF;
+  font-size: 34px;
+  text-align: center;
+  font-weight: 100;
+  letter-spacing: -0.25px;
+  margin: 0px;
+  text-transform: uppercase;
+}
+
+hr{
+  height: 3px;
+  width: 100%;
+  background-color: #A36A72;
+  border-width: 0px;
+}
+
+ul{
+  list-style-type: circle;
+}
+
+li {
+  margin: 8px;
 }
 
 $fontConfig: (
