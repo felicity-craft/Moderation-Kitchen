@@ -1,0 +1,41 @@
+.card-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.card-image{
+    width: 250px;
+    height: 250px;
+    object-fit:cover;
+    border-radius: 5px;
+}
+
+.card-image:hover{
+    color: white;
+    opacity: 50%;
+}
+
+.card-button{
+    display: flex;
+    width: max-content;
+    padding: 10px 16px;
+    background-color: #F9F9EA;
+    border-radius: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-transform: uppercase;
+}
+
+p{
+    font-size: 16px;
+    text-transform: capitalize;
+    text-align: left;
+    font-weight: 100;
+    margin: 8px 0px;
+}

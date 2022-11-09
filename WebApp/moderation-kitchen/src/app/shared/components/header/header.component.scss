@@ -17,26 +17,16 @@
     height: 32px;
 }
 
-.search-input {
-    border-width: 0px;
-    background-color: transparent;
-}
-
 .search-container {
-    background-color: white;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 250px;
-    height: 33px;
-    padding: 0px 16px;
     border-radius: 5px;
 }
 
-.search-icon-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+::ng-deep.mat-form-field-outline{
+    background-color: white !important;
+    border-radius: 5px;
 }
 
 .menu-container {

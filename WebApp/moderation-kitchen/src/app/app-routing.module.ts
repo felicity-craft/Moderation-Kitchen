@@ -10,16 +10,25 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
-      import('./home/home.module').then((m) => m.HomeModule)
+      import('./home/home.module').then((m) => m.HomeModule),
   },
   {
     path: 'recipes',
     loadChildren: () =>
-    import('./recipes/recipes.module').then((m) => m.RecipesModule)
+    import('./recipes/recipes.module').then((m) => m.RecipesModule),
+    data: {breadcrumb: { alias: 'Recipes' }}
+
+  },
+  {
+    path: 'admin',
+    loadChildren: () =>
+    import('./admin/admin.module').then((m) => m.AdminModule),
+    data: {breadcrumb: { alias: 'Admin' }}
+
   },
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: 'home',
   }
 ];
 

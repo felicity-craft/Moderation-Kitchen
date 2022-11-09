@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BreadcrumbModule, BreadcrumbService } from 'xng-breadcrumb';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
@@ -20,14 +22,19 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ButtonComponent } from './components/button/button.component';
 import { TagsComponent } from './components/tags/tags.component';
 import { RatingInputComponent } from './components/rating-input/rating-input.component';
+import { CardComponent } from './components/card/card.component';
+import { SearchContainerComponent } from './components/search-container/search-container.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
@@ -49,8 +56,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatSnackBarModule,
     MatSlideToggleModule,
     MatDividerModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule,
 
     FontAwesomeModule,
+    BreadcrumbModule,
   ],
   declarations: [
     HeaderComponent,
@@ -58,6 +69,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ButtonComponent,
     TagsComponent,
     RatingInputComponent,
+    CardComponent,
+    SearchContainerComponent,
+    BreadcrumbComponent,
   ],
   exports: [
     CommonModule,
@@ -82,12 +96,22 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatSliderModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule,
 
     HeaderComponent,
     FooterComponent,
     ButtonComponent,
     TagsComponent,
     RatingInputComponent,
+    CardComponent,
+    SearchContainerComponent,
+    BreadcrumbComponent,
+
+  ],
+  providers:[
+    BreadcrumbService,
   ]
 })
 export class SharedModule {

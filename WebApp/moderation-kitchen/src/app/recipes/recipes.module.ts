@@ -11,6 +11,8 @@ import { SocialMediaCallComponent } from './components/social-media-call/social-
 import { RecipeCommentSectionComponent } from './components/recipe-comment-section/recipe-comment-section.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { RecipeIndexComponent } from './components/recipe-index/recipe-index.component';
+import { BreadcrumbModule } from 'xng-breadcrumb';
 
 
 
@@ -24,12 +26,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MethodComponent,
     SocialMediaCallComponent,
     RecipeCommentSectionComponent,
+    RecipeIndexComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
     RecipesRoutingModule,
     FontAwesomeModule,
+    BreadcrumbModule,
   ],
 
 })

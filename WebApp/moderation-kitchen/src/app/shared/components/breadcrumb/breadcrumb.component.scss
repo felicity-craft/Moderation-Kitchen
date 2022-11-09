@@ -1,0 +1,22 @@
+.location-path-container {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    background-color: #A36A72;
+    border-radius: 5px 5px 0px 0px;
+    height: 50px;
+}
+
+.breadcrumb{
+    display: flex;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 10px 16px;
+}
+
+mat-icon{
+    padding: 8px;
+    color: #84565E;
+    content: ">";
+}
+

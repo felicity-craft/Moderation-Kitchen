@@ -1,0 +1,18 @@
+<div class="search-container">
+    <div class="category-container">
+        <p class="search">By category</p>
+        <mat-form-field appearance="outline">
+          <mat-select placeholder="Select category">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="category-container">
+        <p class="search">Search</p>
+            <mat-form-field appearance="outline" >
+                <input placeholder="Search the blog" matInput >
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+    </div>
+</div>

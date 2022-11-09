@@ -1,0 +1,33 @@
+.search-container{
+    background-color: #e5e5e5;
+    opacity: 0.6;
+    border-radius: 13px;
+    width: calc(100% - 40px);
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+
+.category-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p.search{
+    text-transform: uppercase;
+}
+
+:host{
+    width: 100%;
+}
+
+.background{
+    background-color: white;
+}
+
+::ng-deep.mat-form-field-outline{
+    background-color: white !important;
+    border-radius: 5px;
+}

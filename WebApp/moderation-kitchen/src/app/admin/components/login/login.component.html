@@ -1,0 +1,26 @@
+<app-breadcrumb></app-breadcrumb>
+<div class="page-container">
+    <div class="page-content-container">
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="email" placeholder="bob@example.com" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Please enter a valid password
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                Password is <strong>required</strong>
+              </mat-error>
+        </mat-form-field>
+        <app-button>Login</app-button>
+    </div>
+</div>
