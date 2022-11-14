@@ -1,21 +1,10 @@
-.page-container {
-    background-color: white;
-    padding: 16px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-}
-
-.page-content-container {
-    // display: flex;
-    // align-items: center;
-    width: 100%;
-    // padding: 85px 95px;
-}
-
 .header-container{
     display: flex;
     width: 100%;
     justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.table-container{
+    width: 100%;
 }

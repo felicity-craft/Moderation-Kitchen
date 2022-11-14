@@ -13,6 +13,7 @@ import { RecipeCommentSectionComponent } from './components/recipe-comment-secti
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RecipeIndexComponent } from './components/recipe-index/recipe-index.component';
 import { BreadcrumbModule } from 'xng-breadcrumb';
+import { ConfirmActionDialogComponent } from './components/confirm-action-dialog/confirm-action-dialog.component';
 
 
 
@@ -27,6 +28,7 @@ import { BreadcrumbModule } from 'xng-breadcrumb';
     SocialMediaCallComponent,
     RecipeCommentSectionComponent,
     RecipeIndexComponent,
+    ConfirmActionDialogComponent,
   ],
   imports: [
     CommonModule,

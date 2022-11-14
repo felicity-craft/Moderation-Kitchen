@@ -7,6 +7,9 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PostTableComponent } from './components/post-table/post-table.component';
 import { EditComponent } from './components/edit/edit.component';
+import { EditIngredientComponent } from './components/edit-ingredient/edit-ingredient.component';
+import { EditMethodComponent } from './components/edit-method/edit-method.component';
+import { ConfirmScheduleDialogComponent } from './components/confirm-schedule-dialog/confirm-schedule-dialog.component';
 
 
 
@@ -17,6 +20,9 @@ import { EditComponent } from './components/edit/edit.component';
     AdminHomeComponent,
     PostTableComponent,
     EditComponent,
+    EditIngredientComponent,
+    EditMethodComponent,
+    ConfirmScheduleDialogComponent,
 
   ],
   imports: [

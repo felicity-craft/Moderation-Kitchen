@@ -1,0 +1,6 @@
+<div class="container">
+        <app-breadcrumb *ngIf="showBreadcrumb"></app-breadcrumb>
+        <div class="page-container" [class.no-breadcrumb]="!showBreadcrumb">
+                <ng-content></ng-content>
+        </div>
+</div>

@@ -1,22 +1,3 @@
-.page-container {
-  background-color: white;
-  padding: 16px;
-  border-radius: 0px 5px 5px 5px;
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.page-content-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  padding: 85px 95px;
-  gap: 20px;
-}
-
 .recipe-hero-image {
   width: 80%;
   height: auto;
@@ -38,3 +19,17 @@
   gap: 8px;
 }
 
+.admin-button-container{
+  display: flex;
+  justify-content: right;
+  width: 100%;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.recipe-time-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}

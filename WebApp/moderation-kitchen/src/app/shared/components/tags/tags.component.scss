@@ -1,8 +1,18 @@
+.tag-container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 .tags {
     text-align: left;
     color: #ACACAC;
     letter-spacing: 0.55px;
     width: 100%;
+}
+
+p{
+    margin-bottom: 0px;
 }
 
 :host {

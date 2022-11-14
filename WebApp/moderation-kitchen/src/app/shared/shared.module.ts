@@ -25,6 +25,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -34,6 +36,9 @@ import { RatingInputComponent } from './components/rating-input/rating-input.com
 import { CardComponent } from './components/card/card.component';
 import { SearchContainerComponent } from './components/search-container/search-container.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { ButtonStrokedComponent } from './components/button-stroked/button-stroked.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PageContainerComponent } from './components/page-container/page-container.component';
 
 
 @NgModule({
@@ -59,6 +64,8 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
+    MatDialogModule,
+    MatToolbarModule,
 
     FontAwesomeModule,
     BreadcrumbModule,
@@ -72,6 +79,8 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
     CardComponent,
     SearchContainerComponent,
     BreadcrumbComponent,
+    ButtonStrokedComponent,
+    PageContainerComponent,
   ],
   exports: [
     CommonModule,
@@ -99,6 +108,8 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
+    MatDialogModule,
+    MatToolbarModule,
 
     HeaderComponent,
     FooterComponent,
@@ -108,6 +119,8 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
     CardComponent,
     SearchContainerComponent,
     BreadcrumbComponent,
+    ButtonStrokedComponent,
+    PageContainerComponent,
 
   ],
   providers:[

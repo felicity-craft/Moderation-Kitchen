@@ -72,20 +72,42 @@ li {
   margin: 8px;
 }
 
+.page-container {
+  background-color: white;
+  padding: 16px;
+  border-radius: 0px 5px 5px 5px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.page-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 85px 95px;
+  gap: 30px;
+  &.is-admin {
+    padding-top: 40px;
+  }
+}
+
 $fontConfig: (
   display-4: mat.define-typography-level(112px, 112px, 300, 'Rubik', -0.0134em),
   display-3: mat.define-typography-level(56px, 56px, 400, 'Rubik', -0.0089em),
   display-2: mat.define-typography-level(45px, 48px, 400, 'Rubik', 0.0000em),
   display-1: mat.define-typography-level(34px, 40px, 400, 'Rubik', 0.0074em),
   headline: mat.define-typography-level(24px, 32px, 400, 'Rubik', 0.0000em),
-  title: mat.define-typography-level(20px, 32px, 500, 'Rubik', 0.0075em),
-  subheading-2: mat.define-typography-level(16px, 28px, 400, 'Rubik', 0.0094em),
-  subheading-1: mat.define-typography-level(15px, 24px, 500, 'Rubik', 0.0067em),
-  body-2: mat.define-typography-level(14px, 24px, 500, 'Rubik', 0.0179em),
-  body-1: mat.define-typography-level(14px, 20px, 400, 'Rubik', 0.0179em),
-  button: mat.define-typography-level(14px, 14px, 500, 'Rubik', 0.0893em),
+  title: mat.define-typography-level(50px, 32px, 300, 'Rubik', -0.5px),
+  subheading-2: mat.define-typography-level(28px, 28px, 300, 'Rubik', 0.0094em),
+  subheading-1: mat.define-typography-level(34px, 24px, 300, 'Rubik', 0.0067em),
+  body-2: mat.define-typography-level(15px, 24px, 400, 'Rubik', 0.0179em),
+  body-1: mat.define-typography-level(15px, 20px, 400, 'Rubik', 0.0179em),
+  button: mat.define-typography-level(14px, 14px, 400, 'Rubik', 0.0893em),
   caption: mat.define-typography-level(12px, 20px, 400, 'Rubik', 0.0333em),
-  input: mat.define-typography-level(inherit, 1.125, 400, 'Rubik', 1.5px)
+  input: mat.define-typography-level(inherit, 1.125, 400, 'Rubik', 1px)
 );
 
 // Foreground Elements

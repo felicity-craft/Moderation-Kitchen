@@ -1,1 +1,88 @@
-<p>edit works!</p>
+<app-page-container>
+      <div class="button-container">
+        <app-button>Publish</app-button>
+        <app-button-stroked (click)="openDialog()">Schedule</app-button-stroked>
+        <app-button-stroked>Save draft</app-button-stroked>
+      </div>
+      <h2>Give this post a title</h2>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Intro</mat-label>
+        <textarea
+          matInput
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="5"
+          placeholder="Write an intro to your post"
+        ></textarea>
+      </mat-form-field>
+      
+      <div class="feature-image">
+        <mat-card class="image-card">
+          <p class="input">Feature image</p>
+          <img mat-card-image src="/assets/images/feature-images/6.jpg" >
+          <app-button>
+            <input type="file" id="fileInput" name="fileInput" accept="image/*" />
+            Select image
+          </app-button>
+        </mat-card>
+      </div>
+      
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Body</mat-label>
+        <textarea
+          matInput
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="10"
+          placeholder="Tell people why they should make this recipe"
+        ></textarea>
+      </mat-form-field>
+      <div class="row-container">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Prep time</mat-label>
+          <input matInput type="text" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Cook time</mat-label>
+          <input matInput type="text" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Quantity/size made</mat-label>
+          <input matInput type="text" />
+        </mat-form-field>
+      </div>
+      <div class="recipe-section-header">
+        <h4>Ingredients</h4>
+        <hr />
+      </div>
+      <div class="step-container">
+        <app-edit-ingredient icon="add"></app-edit-ingredient>
+        <app-edit-ingredient icon="cancel"></app-edit-ingredient>
+      </div>
+      <div class="recipe-section-header">
+        <h4>Method</h4>
+        <hr />
+      </div>
+      <div class="step-container">
+        <app-edit-method icon="add"></app-edit-method>
+        <app-edit-method icon="cancel"></app-edit-method>
+      </div>
+      <hr />
+      
+      <mat-form-field class="tag-list" appearance="outline">
+        <mat-label>Tags</mat-label>
+        <mat-chip-list #chipList aria-label="Tag selection">
+          <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
+            {{ tag.name }}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input
+            placeholder="New tag..."
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="add($event)"
+          />
+        </mat-chip-list>
+      </mat-form-field>
+</app-page-container>

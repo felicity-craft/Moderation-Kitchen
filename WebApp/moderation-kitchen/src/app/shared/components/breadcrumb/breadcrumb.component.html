@@ -1,8 +1,5 @@
 <div class="location-path-container">
-    <div class="breadcrumb">
-        <xng-breadcrumb [separator]="iconTemplate"></xng-breadcrumb>
-        <ng-template #iconTemplate>
-          <mat-icon>chevron_right</mat-icon>
-        </ng-template>
-    </div>
+  <ul class="breadcrumb">
+      <li *ngFor="let breadcrumb of breadcrumbs"><a href="{{breadcrumb.path}}">{{breadcrumb.text}}</a></li>
+  </ul>
 </div>
