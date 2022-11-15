@@ -1,0 +1,35 @@
+[
+    {
+      "title": "Chocolate macaron cake",
+      "intro": "Some text here for intro",
+      "body": "Some text here for the body",
+      "prep-time": "15 mins",
+      "cook-time": "30 mins",
+      "quantity-size-made": "8inch cake",
+      "inredients": ["unsalted butter", "caster sugar", "flour"],
+      "method": ["cream butter", "add in eggs"],
+      "tags": ["cake", "chocolate"]
+    },
+    {
+        "title": "Vanilla cake",
+        "intro": "Some text here for intro",
+        "body": "Some text here for the body",
+        "prep-time": "15 mins",
+        "cook-time": "30 mins",
+        "quantity-size-made": "8inch cake",
+        "inredients": ["unsalted butter", "caster sugar", "flour"],
+        "method": ["cream butter", "add in eggs"],
+        "tags": ["cake", "chocolate"]
+    },
+    {
+        "title": "Cookies",
+        "intro": "Some text here for intro",
+        "body": "Some text here for the body",
+        "prep-time": "15 mins",
+        "cook-time": "30 mins",
+        "quantity-size-made": "8inch cake",
+        "inredients": ["unsalted butter", "caster sugar", "flour"],
+        "method": ["cream butter", "add in eggs"],
+        "tags": ["cake", "chocolate"]
+    }
+  ]

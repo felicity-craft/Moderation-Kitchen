@@ -1,4 +1,5 @@
-<app-header></app-header>
+<app-admin-header *ngIf="showAdminHeader"></app-admin-header>
+<app-header *ngIf="!showAdminHeader"></app-header>
 
 <div class="container">
   <router-outlet></router-outlet>

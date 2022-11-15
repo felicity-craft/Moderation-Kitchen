@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BreadcrumbModule, BreadcrumbService } from 'xng-breadcrumb';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
@@ -39,6 +40,8 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
 import { ButtonStrokedComponent } from './components/button-stroked/button-stroked.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PageContainerComponent } from './components/page-container/page-container.component';
+import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
+import { ConfirmLogoutDialogComponent } from './components/confirm-logout-dialog/confirm-logout-dialog.component';
 
 
 @NgModule({
@@ -69,6 +72,7 @@ import { PageContainerComponent } from './components/page-container/page-contain
 
     FontAwesomeModule,
     BreadcrumbModule,
+    HttpClientModule,
   ],
   declarations: [
     HeaderComponent,
@@ -81,6 +85,8 @@ import { PageContainerComponent } from './components/page-container/page-contain
     BreadcrumbComponent,
     ButtonStrokedComponent,
     PageContainerComponent,
+    AdminHeaderComponent,
+    ConfirmLogoutDialogComponent,
   ],
   exports: [
     CommonModule,
@@ -121,6 +127,8 @@ import { PageContainerComponent } from './components/page-container/page-contain
     BreadcrumbComponent,
     ButtonStrokedComponent,
     PageContainerComponent,
+    AdminHeaderComponent,
+    ConfirmLogoutDialogComponent,
 
   ],
   providers:[

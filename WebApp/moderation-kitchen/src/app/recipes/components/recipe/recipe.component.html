@@ -1,9 +1,16 @@
 <app-page-container>
+  <div class="blog-post" *ngFor="let blogPost of blogPosts | async">
+    <span>{{blogPost.title}}</span>
+    <span>{{blogPost.intro}}</span>
+    <span>{{blogPost.body}}</span>
+  </div>
   <div class="admin-button-container">
     <app-button>Edit post</app-button>
     <app-button-stroked (click)="openDialog()">Delete</app-button-stroked>
   </div>
-  <h2>Chocolate chunk cookies</h2>
+  <div *ngFor="let blogPost of blogPosts | async">
+    <h2>{{blogPost.title}}</h2>
+  </div>
   <p>By Felicity ⦁ Published Aug 25 2022</p>
   <app-button icon="expand_more">Jump to recipe</app-button>
   <p>
