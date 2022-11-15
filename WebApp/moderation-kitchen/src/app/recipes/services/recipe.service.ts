@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { observable, Observable, from, asapScheduler, delay, count } from 'rxjs';
 import { Recipe } from '../interfaces/recipe';
 import { faker } from "@faker-js/faker";
+import { RecipeComment } from '../interfaces/recipe-comment';
 
 const INGREDIENTS = [
   '100g flour',
@@ -65,6 +66,15 @@ export class RecipeService {
         rating: faker.datatype.number({min: 1, max: 4, precision: 2}),
         countVotes: faker.datatype.number({min: 0, max: 1000}),
       },
+      comments: this.getManyComments(3),
+    }));
+  }
+
+  getManyComments(count: number): RecipeComment[] {
+    return Array.from({ length: count }, (_, __) => ({
+      commenter: faker.name.fullName(),
+      createdDate: faker.date.past(),
+      text: faker.lorem.paragraph(),
     }));
   }
 }

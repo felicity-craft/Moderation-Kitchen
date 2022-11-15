@@ -1,3 +1,4 @@
+import { RecipeComment } from "./recipe-comment";
 import { RecipeRating } from "./recipe-rating";
 
 /**
@@ -18,4 +19,5 @@ export interface Recipe {
   heroImageUrl: string;
   printImageUrl: string;
   rating: RecipeRating;
+  comments: RecipeComment[];
 }

@@ -33,6 +33,6 @@
     <app-tags [tags]="recipe.tags"></app-tags>
     <app-social-media-call></app-social-media-call>
     <hr>
-    <app-recipe-comment-section></app-recipe-comment-section>
+    <app-recipe-comment-section [comments]="recipe.comments" [recipeTitle]="recipe.title"></app-recipe-comment-section>
   </ng-container>
 </app-page-container>

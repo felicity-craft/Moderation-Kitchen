@@ -22,9 +22,11 @@
         <app-button >Submit comment</app-button>
     </div>
     <div class="comment-section">
-        <h3>1 comment on "Chocolate chunk cookies"</h3>
+        <h3>{{comments?.length}} comment(s) on "{{recipeTitle}}"</h3>
         <hr>
-        <p>HEATHER I. ⦁ OCTOBER 26, 2022</p>
-        <p>I love refrigerating my dough, too. These cookies look amazing. I'm trying these out very soon.</p>
+        <div *ngFor="let comment of comments">
+            <p>{{comment.commenter}} ⦁ {{comment.createdDate | date:'MMMM dd yyyy'}}</p>
+            <p>{{comment.text}}</p>
+        </div>
     </div>
 </div>

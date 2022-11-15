@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { RecipeComment } from '../../interfaces/recipe-comment';
 
 @Component({
   selector: 'app-recipe-comment-section',
@@ -6,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recipe-comment-section.component.scss']
 })
 export class RecipeCommentSectionComponent implements OnInit {
+
+  @Input()
+  public recipeTitle?: string;
+
+  @Input()
+  public comments?: RecipeComment[];
 
   constructor() { }
 
