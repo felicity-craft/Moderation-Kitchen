@@ -9,6 +9,22 @@ const INGREDIENTS = [
   '2 eggs',
   '1 tsp vanilla',
   '20g cocoa',
+  '170g unsalted butter',
+  '100g caster sugar',
+  '150g brown sugar',
+  '1 whole egg',
+  '1 egg yolk',
+  '10ml vanilla extract',
+  '2g table salt',
+  '25g cornflour',
+  '100g brown rice flour',
+  '100g white rice flour',
+  '50g tapioca starch',
+  '1g xantham gum',
+  '2g baking powder',
+  '2g baking soda',
+  '200g dark chocolate',
+  'sea salt for sprinkling',
 ]
 
 const TAGS = [
