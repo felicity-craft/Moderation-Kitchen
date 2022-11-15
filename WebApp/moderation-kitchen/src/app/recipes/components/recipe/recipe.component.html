@@ -22,7 +22,7 @@
       class="recipe-card-image"
     />
     <h4 id="recipe">{{recipe.title}}</h4>
-    <app-rating></app-rating>
+    <app-rating [rating]="recipe.rating"></app-rating>
     <app-preparation></app-preparation>
     <div class="button-container">
       <app-button icon="print">Print recipe</app-button>

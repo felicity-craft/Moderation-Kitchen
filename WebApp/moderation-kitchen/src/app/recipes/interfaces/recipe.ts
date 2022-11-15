@@ -1,3 +1,5 @@
+import { RecipeRating } from "./recipe-rating";
+
 /**
  * Represents a blog post for a recipe.
  */
@@ -15,4 +17,5 @@ export interface Recipe {
   publishDate: Date;
   heroImageUrl: string;
   printImageUrl: string;
+  rating: RecipeRating;
 }

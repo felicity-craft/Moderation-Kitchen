@@ -44,7 +44,11 @@ export class RecipeService {
       author: faker.name.firstName(),
       publishDate: faker.date.past(),
       heroImageUrl: `/assets/images/random/random-${faker.datatype.number({min: 1, max: 11})}.jpg`,
-      printImageUrl: `/assets/images/random/random-${faker.datatype.number({min: 1, max: 11})}.jpg`
+      printImageUrl: `/assets/images/random/random-${faker.datatype.number({min: 1, max: 11})}.jpg`,
+      rating: {
+        rating: faker.datatype.number({min: 1, max: 4, precision: 2}),
+        countVotes: faker.datatype.number({min: 0, max: 1000}),
+      },
     }));
   }
 }
