@@ -23,7 +23,7 @@
     />
     <h4 id="recipe">{{recipe.title}}</h4>
     <app-rating [rating]="recipe.rating"></app-rating>
-    <app-preparation></app-preparation>
+    <app-preparation [prepTime]="recipe.prepTime" [cookTime]="recipe.cookTime" [quantitySizeMade]="recipe.quantitySizeMade"></app-preparation>
     <div class="button-container">
       <app-button icon="print">Print recipe</app-button>
       <app-button icon="share">Share recipe</app-button>
