@@ -11,4 +11,8 @@ export interface Recipe {
   ingredients: string[];
   method: string[];
   tags: string[];
+  author: string;
+  publishDate: Date;
+  heroImageUrl: string;
+  printImageUrl: string;
 }
