@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { BreadcrumbService } from 'xng-breadcrumb';
 import {MatDialog} from '@angular/material/dialog';
 import { ConfirmActionDialogComponent } from '../confirm-action-dialog/confirm-action-dialog.component';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Recipe } from '../../interfaces/recipe';
+import { RecipeService } from '../../services/recipe.service';
 
 
 @Component({
@@ -13,24 +13,19 @@ import { Observable } from 'rxjs';
 })
 export class RecipeComponent implements OnInit {
 
-  blogPosts!: Observable<{title: string, intro: string, body: string}[]>;
+  blogPosts!: Observable<Recipe>;
 
   constructor(
-    private breadcrumbService: BreadcrumbService,
     public dialog: MatDialog,
-    private http: HttpClient,
+    private recipeService: RecipeService,
   ) { }
 
   ngOnInit(): void {
-    this.breadcrumbService.set('@recipe', 'Chocolate chunk cookies')
-    this.blogPosts = this.getBlogPost();
+    this.blogPosts = this.recipeService.getRecipeBySlug("chocolate-chunk-cookies");
   }
 
   openDialog() {
     this.dialog.open(ConfirmActionDialogComponent);
   }
 
-  getBlogPost(){
-    return this.http.get<{title: string, intro: string, body: string}[]> ("/assets/blog-posts.json");
-  }
 }

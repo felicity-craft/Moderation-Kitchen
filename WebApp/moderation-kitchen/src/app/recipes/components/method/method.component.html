@@ -4,16 +4,6 @@
 </div>
 <div class="recipe-method-container">
 <ol>
-<li>Chop the chocolate into irregular sized chunks and flakes. Set aside for later.</li>
-<li>Melt the butter on the stove or microwave, then transfer to a large bowl.</li>
-<li>Add both sugars and whisk until completely combined and emulsified with the butter.</li>
-<li>Next whisk in the egg, egg yolk and vanilla.</li>
-<li>Sift all of the dry ingredients over the bowl, then beat through until no flour specks are left.
-</li>
-<li>Fold through the chocolate. Cover with plastic wrap and set aside to chill in the fridge for 24
-    hours.</li>
-<li>Preheat your oven to 160°C Fan Bake</li>
-<li>Scoop you chilled dough onto baking paper lined trays, usually 8 to a tray, and bake for 9-11
-    minutes.</li>
+<li *ngFor="let step of method">{{step}}</li>
 </ol>
 </div>

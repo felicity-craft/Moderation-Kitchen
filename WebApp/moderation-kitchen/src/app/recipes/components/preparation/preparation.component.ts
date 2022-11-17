@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-preparation',
@@ -6,6 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./preparation.component.scss']
 })
 export class PreparationComponent implements OnInit {
+
+  @Input()
+  public prepTime?: string;
+
+  @Input()
+  public cookTime?: string;
+
+  @Input()
+  public quantitySizeMade?: string;
 
   constructor() { }
 

@@ -10,7 +10,7 @@ const routes: Routes = [
     component: RecipeIndexComponent,
   },
   {
-    path: ':name',
+    path: ':slug',
     component: RecipeComponent,
   }
   
