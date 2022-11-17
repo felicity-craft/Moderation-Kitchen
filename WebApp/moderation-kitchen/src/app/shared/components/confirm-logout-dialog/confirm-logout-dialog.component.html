@@ -3,6 +3,6 @@
 </h1>
 <div mat-dialog-content>Logout of Moderation Kitchen admin suite?</div>
 <div mat-dialog-actions>
-  <button mat-flat-button color="accent" class="logout-button">Yes, logout</button>
+  <button mat-flat-button mat-dialog-close color="accent" class="logout-button" (click)="logoutUser()">Yes, logout</button>
   <button mat-stroked-button mat-dialog-close>No, cancel</button>
 </div>

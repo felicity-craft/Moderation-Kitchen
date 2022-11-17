@@ -1,7 +1,7 @@
 <div class="header-container">
     <div class="header-content-container">
         <div class="logout-container">
-            <app-button (click)="openDialog()">Log out</app-button>
+            <app-button (click)="openDialog()" *ngIf="showLogout">Log out</app-button>
         </div>
         <div class="search-container">
                 <mat-form-field appearance="outline" >

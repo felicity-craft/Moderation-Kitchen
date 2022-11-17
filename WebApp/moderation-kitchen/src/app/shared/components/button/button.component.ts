@@ -7,12 +7,17 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
 
+  @Input()
+  public type?: string;
+
   @Input()  
   public icon?: string 
   
   @Input()
   public trailingIcon?: string 
 
+  // @Input()
+  // public disabled?: boolean
 
   constructor() { }
 

@@ -10,3 +10,14 @@
 mat-form-field{
     width: 250px;
 }
+
+.login-error{
+    color: #842029;
+    background-color: #f8d7da;
+    position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    border-color: #f5c2c7;
+}

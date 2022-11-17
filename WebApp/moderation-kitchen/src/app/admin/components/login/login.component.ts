@@ -1,27 +1,51 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
+import { Component} from '@angular/core';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+  public showLoginError: boolean = false;
 
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  matcher = new MyErrorStateMatcher;
-
-  constructor() { }
-
-  ngOnInit(): void {
+  public get emailControl(): AbstractControl {
+    return this.formGroup.get('email') as AbstractControl;
+  }
+  public get passwordControl(): AbstractControl {
+    return this.formGroup.get('password') as AbstractControl;
   }
 
+  public formGroup: FormGroup;
+
+  constructor(
+    private auth: AuthenticationService,
+    private router: Router,
+    fb: FormBuilder
+  ) {
+    this.formGroup = fb.group({
+      email: [null, [Validators.email, Validators.required]],
+      password: [null, [Validators.required]],
+    });
+  }
+
+  loginUser() {
+    const isLoggedIn = this.auth.loginUser(
+      this.emailControl.value,
+      this.passwordControl.value
+    );
+    if (isLoggedIn) {
+      this.router.navigate(['/admin']);
+    } else {
+      this.showLoginError = true;
+    }
+  }
 }
