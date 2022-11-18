@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { from, observable, Observable } from 'rxjs';
 import { Recipe } from '../interfaces/recipe';
+import { RecipeComment } from '../interfaces/recipe-comment';
 
-const RECIPES: Recipe[] = [
+var RECIPES: Recipe[] = [
   {
     slug: 'chocolate-macaron-cake',
     title: 'Chocolate macaron cake',
@@ -18,6 +19,15 @@ const RECIPES: Recipe[] = [
     inredients: [{ quantity: '100g', ingredient: 'unsalted butter' }],
     method: ['cream butter', 'add in eggs'],
     tags: ['Cake', 'Chocolate'],
+    comments: [
+      {
+        rating: 5,
+        comment: 'this was yum',
+        name: 'Bobby Brown',
+        email: 'bb@example.com',
+        date: new Date("11/10/2022")
+      },
+    ],
   },
   {
     slug: 'vanilla-cake',
@@ -34,6 +44,15 @@ const RECIPES: Recipe[] = [
     inredients: [{ quantity: '100g', ingredient: 'unsalted butter' }],
     method: ['cream butter', 'add in eggs'],
     tags: ['Cake', 'Chocolate'],
+    comments: [
+      {
+        rating: 4,
+        comment: 'this was yum!',
+        name: 'Bobby Brown',
+        email: 'bb@example.com',
+        date: new Date("11/10/2022")
+      },
+    ],
   },
   {
     slug: 'chocolate-chunk-cookies',
@@ -47,9 +66,28 @@ const RECIPES: Recipe[] = [
     prepTime: '15 mins',
     cookTime: '30 mins',
     quantitySizeMade: '15 cookies',
-    inredients: [{ quantity: '100g', ingredient: 'unsalted butter' }, { quantity: '200g', ingredient: 'caster sugar'}],
+    inredients: [
+      { quantity: '100g', ingredient: 'unsalted butter' },
+      { quantity: '200g', ingredient: 'caster sugar' },
+    ],
     method: ['Cream butter', 'Add in the eggs'],
     tags: ['Cake', 'Chocolate'],
+    comments: [
+      {
+        rating: 4,
+        comment: 'this was yum!',
+        name: 'Bobby Brown',
+        email: 'bb@example.com',
+        date: new Date("2022-10-11")
+      },
+      {
+        rating: 5,
+        comment: 'this was great!',
+        name: 'Chester Craft',
+        email: 'cc@example.com',
+        date: new Date("2022-10-15")
+      },
+    ],
   },
 ];
 
@@ -60,6 +98,12 @@ export class RecipeService {
   getRecipeBySlug(slug: string): Observable<Recipe> {
     const recipe = RECIPES.filter((r) => r.slug === slug);
     return from(recipe);
+  }
+
+  submitComment(slug: string, recipeComment: RecipeComment) {
+    recipeComment.date = new Date();
+    const recipe = RECIPES.find((r) => r.slug === slug);
+    recipe?.comments.push(recipeComment);
   }
 
   constructor() {}

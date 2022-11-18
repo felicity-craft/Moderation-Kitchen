@@ -1,4 +1,5 @@
 import { Ingredient } from "./ingredient";
+import { RecipeComment } from "./recipe-comment";
 
 export interface Recipe {
   slug: string;
@@ -15,4 +16,5 @@ export interface Recipe {
   inredients: Ingredient[];
   method: string[];
   tags: string[];
+  comments: RecipeComment[];
 }

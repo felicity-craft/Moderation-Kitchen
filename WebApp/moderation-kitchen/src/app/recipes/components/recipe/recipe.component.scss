@@ -14,7 +14,8 @@
 
 .recipe-hero-image {
   width: 80%;
-  height: auto;
+  max-height: 700px;
+  object-fit: cover;
 }
 
 .recipe-card-image {

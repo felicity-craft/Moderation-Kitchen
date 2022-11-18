@@ -24,6 +24,6 @@
     <app-tags [tags]="blogPost.tags"></app-tags>
     <app-social-media-call></app-social-media-call>
     <hr>
-    <app-recipe-comment-section></app-recipe-comment-section>
+    <app-recipe-comment-section [comments]="blogPost.comments" (commentSubmittedEvent)="onSubmitComment($event)"></app-recipe-comment-section>
   </ng-container>
 </app-page-container>
