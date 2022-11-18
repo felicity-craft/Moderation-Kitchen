@@ -1,7 +1,15 @@
-<div class="rating-input-container">
-    <fa-icon [icon]="faStar" size="xl"></fa-icon>
-    <fa-icon [icon]="faStar" size="xl"></fa-icon>
-    <fa-icon [icon]="faStar" size="xl"></fa-icon>
-    <fa-icon [icon]="faStar" size="xl"></fa-icon>
-    <fa-icon [icon]="faStar" size="xl"></fa-icon>
+<div
+    class="rating-input-container"
+    (mouseleave)="hoverStar(0)">
+    <div *ngFor="let star of stars"
+    (click)="countStar(star)"
+    (mouseenter)="hoverStar(star)">
+        <fa-icon
+             [ngClass]="{
+                 'selected': (star <= selectedUserRating),
+                 'hovered': (star <= hoveredUserRating)
+            }"
+             [icon]="icon(star)" size="xl">
+        </fa-icon>
+    </div>
 </div>
