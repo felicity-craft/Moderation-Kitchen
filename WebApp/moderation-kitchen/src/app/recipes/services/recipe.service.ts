@@ -16,7 +16,7 @@ var RECIPES: Recipe[] = [
     prepTime: '15 mins',
     cookTime: '30 mins',
     quantitySizeMade: '8inch cake',
-    inredients: [{ quantity: '100g', ingredient: 'unsalted butter' }],
+    ingredients: [{ quantity: '100g', ingredient: 'unsalted butter' }],
     method: ['cream butter', 'add in eggs'],
     tags: ['Cake', 'Chocolate'],
     comments: [
@@ -41,7 +41,7 @@ var RECIPES: Recipe[] = [
     prepTime: '15 mins',
     cookTime: '30 mins',
     quantitySizeMade: '8inch cake',
-    inredients: [{ quantity: '100g', ingredient: 'unsalted butter' }],
+    ingredients: [{ quantity: '100g', ingredient: 'unsalted butter' }],
     method: ['cream butter', 'add in eggs'],
     tags: ['Cake', 'Chocolate'],
     comments: [
@@ -66,7 +66,7 @@ var RECIPES: Recipe[] = [
     prepTime: '15 mins',
     cookTime: '30 mins',
     quantitySizeMade: '15 cookies',
-    inredients: [
+    ingredients: [
       { quantity: '100g', ingredient: 'unsalted butter' },
       { quantity: '200g', ingredient: 'caster sugar' },
     ],

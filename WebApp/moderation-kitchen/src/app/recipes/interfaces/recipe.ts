@@ -13,7 +13,7 @@ export interface Recipe {
   prepTime: string;
   cookTime: string;
   quantitySizeMade: string;
-  inredients: Ingredient[];
+  ingredients: Ingredient[];
   method: string[];
   tags: string[];
   comments: RecipeComment[];

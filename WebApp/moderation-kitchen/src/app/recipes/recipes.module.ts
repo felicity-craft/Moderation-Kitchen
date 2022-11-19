@@ -14,6 +14,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RecipeIndexComponent } from './components/recipe-index/recipe-index.component';
 import { BreadcrumbModule } from 'xng-breadcrumb';
 import { ConfirmActionDialogComponent } from './components/confirm-action-dialog/confirm-action-dialog.component';
+import { EditComponent } from './components/edit/edit.component';
+import { EditIngredientComponent } from './components/edit-ingredient/edit-ingredient.component';
+import { EditMethodComponent } from './components/edit-method/edit-method.component';
 
 
 
@@ -29,6 +32,9 @@ import { ConfirmActionDialogComponent } from './components/confirm-action-dialog
     RecipeCommentSectionComponent,
     RecipeIndexComponent,
     ConfirmActionDialogComponent,
+    EditComponent,
+    EditIngredientComponent,
+    EditMethodComponent,
   ],
   imports: [
     CommonModule,
