@@ -1,7 +1,6 @@
-<div class="rating-input-container">
-    <fa-icon [icon]="faStar" size="xl"></fa-icon>
-    <fa-icon [icon]="faStar" size="xl"></fa-icon>
-    <fa-icon [icon]="faStar" size="xl"></fa-icon>
-    <fa-icon [icon]="faStar" size="xl"></fa-icon>
-    <fa-icon [icon]="faStar" size="xl"></fa-icon>
+<div class="rating-input-container" (mouseleave)="clearHover()">
+    <!-- For each star in stars array (as in the ts file), create the star icon -->
+    <div *ngFor="let star of stars" (mouseenter)="hoverStar(star)" (click)="selectStar(star)">
+        <fa-icon [icon]="getIcon(star)" size="xl"></fa-icon>
+    </div>
 </div>
