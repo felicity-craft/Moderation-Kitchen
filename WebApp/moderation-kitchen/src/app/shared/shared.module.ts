@@ -48,6 +48,7 @@ import { ConfirmLogoutDialogComponent } from './components/confirm-logout-dialog
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
 
     MatButtonModule,
     MatSelectModule,
