@@ -11,17 +11,17 @@ const routes: Routes = [
     component: RecipeIndexComponent,
   },
   {
+    path: 'new',
+    component: EditComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: ':slug',
     component: RecipeComponent,
   },
   { path: ':slug/edit', 
       component: EditComponent, 
       canActivate: [AuthGuard] 
-  },
-  {
-    path: 'new',
-    component: EditComponent,
-    canActivate: [AuthGuard],
   },
 ];
 
