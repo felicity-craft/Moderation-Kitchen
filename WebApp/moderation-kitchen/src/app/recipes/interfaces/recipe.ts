@@ -9,7 +9,6 @@ export interface Recipe {
   intro: string;
   heroImage: string;
   body: string;
-  printImage: string;
   prepTime: string;
   cookTime: string;
   quantitySizeMade: string;

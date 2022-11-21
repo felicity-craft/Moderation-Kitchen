@@ -86,7 +86,6 @@ export class EditComponent {
       intro: fb.control(''),
       heroImage: fb.control(''),
       body: fb.control(''),
-      printImage: fb.control(''),
       prepTime: fb.control(''),
       cookTime: fb.control(''),
       quantitySizeMade: fb.control(''),
