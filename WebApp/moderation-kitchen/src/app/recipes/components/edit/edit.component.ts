@@ -4,6 +4,8 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmScheduleDialogComponent } from '../../../admin/components/confirm-schedule-dialog/confirm-schedule-dialog.component';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { RecipeService } from '../../services/recipe.service';
+import { Router } from '@angular/router';
 
 interface RecipeEditForm {
   slug: FormControl<string>;
@@ -67,15 +69,20 @@ export class EditComponent {
   // this is the tag form which represents new tags to be added to the recipe.
   public tagFormGroup: FormGroup;
   // Image preview
-  public preview: string = "/assets/images/default.png";
+  public preview: string = '/assets/images/default.png';
   private reader: FileReader = new FileReader();
 
-  constructor(public dialog: MatDialog, private fb: FormBuilder) {
+  constructor(
+    public dialog: MatDialog,
+    private fb: FormBuilder,
+    private recipeService: RecipeService,
+    private router: Router,
+  ) {
     this.formGroup = fb.group({
       slug: fb.control(''),
       title: fb.control(''),
-      author: fb.control(''),
-      date: fb.control(''),
+      author: fb.control('Felicity'),
+      date: fb.control(new Date()),
       intro: fb.control(''),
       heroImage: fb.control(''),
       body: fb.control(''),
@@ -90,7 +97,7 @@ export class EditComponent {
     // whenever the title changes, update the slug by converting the tile to lower kebab case.
     this.titleControl.valueChanges.subscribe((value: string) => {
       const valueAsKebabCase = value.toLowerCase().replace(/ /g, '-');
-      this.slugControl.setValue(valueAsKebabCase)
+      this.slugControl.setValue(valueAsKebabCase);
     });
     // this is initializing the ingredient form group, adding a control with an empty value to the form
     this.ingredientFormGroup = fb.group({
@@ -102,15 +109,15 @@ export class EditComponent {
     });
     // this is initializing the tag form group, adding a control with an empty value to the form
     this.tagFormGroup = fb.group({
-      tag: fb.control('')
-    })
+      tag: fb.control(''),
+    });
   }
 
   // image methods
-  selectImage(event: any){
+  selectImage(event: any) {
     const selectedFiles = event.target.files;
     if (selectedFiles) {
-      const file: File|null = selectedFiles.item(0);
+      const file: File | null = selectedFiles.item(0);
       if (file) {
         this.preview = '';
         this.reader.onload = (e: any) => {
@@ -125,9 +132,7 @@ export class EditComponent {
   // ingredients methods
   addIngredient(): void {
     const ingredientValue = this.ingredientFormGroup.get('ingredient').value;
-    this.ingredientsArray.push(
-      this.fb.control(ingredientValue)
-    );
+    this.ingredientsArray.push(this.fb.control(ingredientValue));
     this.ingredientFormGroup.reset();
   }
   removeIngredient(controlIndex: number): void {
@@ -137,16 +142,13 @@ export class EditComponent {
   // method step methods
   addMethodStep(): void {
     const methodStepValue = this.methodFormGroup.get('step').value;
-    this.methodArray.push(
-      this.fb.control(methodStepValue)
-    );
+    this.methodArray.push(this.fb.control(methodStepValue));
     this.methodFormGroup.reset();
   }
   removeMethodStep(controlIndex: number): void {
     this.methodArray.removeAt(controlIndex);
   }
 
-  
   // tag methods
   addTag(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
@@ -157,6 +159,15 @@ export class EditComponent {
   }
   removeTag(controlIndex: number): void {
     this.tagsControl.removeAt(controlIndex);
+  }
+
+  // publish method
+  publishRecipe() {
+    this.recipeService
+      .publishRecipe(this.formGroup.value)
+      .subscribe({
+        complete: () => this.router.navigateByUrl(`/recipes/${this.slugControl.value}`)
+      });
   }
 
   // scheduled method

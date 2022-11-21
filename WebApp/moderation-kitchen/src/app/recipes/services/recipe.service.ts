@@ -8,7 +8,7 @@ var RECIPES: Recipe[] = [
     slug: 'chocolate-macaron-cake',
     title: 'Chocolate macaron cake',
     author: 'Felicity Craft',
-    date: '31st October 2022',
+    date: new Date('17 July 2022'),
     intro: 'Some text here for intro',
     heroImage: '/assets/images/post-images/buns.jpg',
     body: 'Some text here for the body',
@@ -33,7 +33,7 @@ var RECIPES: Recipe[] = [
     slug: 'vanilla-cake',
     title: 'Vanilla cake',
     author: 'Chester Craft',
-    date: '15th May 2022',
+    date: new Date('17 July 2022'),
     intro: 'Some text here for intro',
     heroImage: '/assets/images/post-images/cereal.jpg',
     body: 'Some text here for the body',
@@ -58,7 +58,7 @@ var RECIPES: Recipe[] = [
     slug: 'chocolate-chunk-cookies',
     title: 'Chocolate chunk cookies',
     author: 'Isaac Brown',
-    date: '17th July 2022',
+    date: new Date('17 July 2022'),
     intro: 'Some text here for intro',
     heroImage: '/assets/images/post-images/fruits.jpg',
     body: 'Some text here for the body',
@@ -95,6 +95,14 @@ var RECIPES: Recipe[] = [
   providedIn: 'root',
 })
 export class RecipeService {
+  constructor() {}
+
+  publishRecipe(recipe: Recipe): Observable<void> {
+    RECIPES.push(recipe);
+    console.log(RECIPES);
+    return new Observable<void>((observer)=> observer.complete());
+  }
+
   getRecipeBySlug(slug: string): Observable<Recipe> {
     const recipe = RECIPES.filter((r) => r.slug === slug);
     return from(recipe);
@@ -106,5 +114,4 @@ export class RecipeService {
     recipe?.comments.push(recipeComment);
   }
 
-  constructor() {}
 }

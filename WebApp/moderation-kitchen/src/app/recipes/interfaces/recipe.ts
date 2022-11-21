@@ -5,7 +5,7 @@ export interface Recipe {
   slug: string;
   title: string;
   author: string;
-  date: string;
+  date: Date;
   intro: string;
   heroImage: string;
   body: string;
