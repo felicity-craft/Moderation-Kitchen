@@ -28,14 +28,14 @@
     <div class="feature-image">
       <mat-card class="image-card">
         <p class="input">Feature image</p>
-        <img mat-card-image src="/assets/images/feature-images/6.jpg" />
+        <img mat-card-image [src]="preview" />
         <app-button>
           <input
             type="file"
             id="fileInput"
             name="fileInput"
             accept="image/*"
-            formControlName="heroImage"
+            (change)="selectImage($event)"
           />
           Select image
         </app-button>
@@ -130,26 +130,27 @@
       </form>
     </div>
     <hr />
-
-    <mat-form-field class="tag-list" appearance="outline">
-      <mat-label>Tags</mat-label>
-      <mat-chip-list #chipList aria-label="Tag selection">
-        <mat-chip *ngFor="let tag of tagsControl.value" (removed)="remove(tag)">
-          {{ tag }}
-          <button matChipRemove>
-            <mat-icon>cancel</mat-icon>
-          </button>
-        </mat-chip>
-        <input
-          placeholder="New tag..."
-          [matChipInputFor]="chipList"
-          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-          [matChipInputAddOnBlur]="addOnBlur"
-          (matChipInputTokenEnd)="add($event)"
-          formControlName="tags"
-        />
-      </mat-chip-list>
-    </mat-form-field>
+    <form [formGroup]="tagFormGroup">
+      <mat-form-field class="tag-list" appearance="outline">
+        <mat-label>Tags</mat-label>
+        <mat-chip-list #chipList aria-label="Tag selection">
+          <mat-chip *ngFor="let tag of tagsControl.value; let i = index" (removed)="removeTag(i)">
+            {{ tag }}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input
+            placeholder="New tag..."
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="addTag($event)"
+            formControlName="tag"
+          />
+        </mat-chip-list>
+      </mat-form-field>
+    </form>
   </form>
   <pre>{{ formGroup.value | json }}</pre>
 </app-page-container>

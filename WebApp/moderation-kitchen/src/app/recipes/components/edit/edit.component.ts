@@ -51,10 +51,18 @@ export class EditComponent {
   public get methodControls(): FormControl[] {
     return this.methodArray.controls as FormControl[];
   }
+  public get heroImageControl(): FormControl {
+    return this.formGroup.get('heroImage') as FormControl;
+  }
   // this is the ingredient form which represents new ingredients to be added to the recipe.
   public ingredientFormGroup: FormGroup;
   // this is the method form which represents new method steps to be added to the recipe.
   public methodFormGroup: FormGroup;
+  // this is the tag form which represents new tags to be added to the recipe.
+  public tagFormGroup: FormGroup;
+  // Image preview
+  public preview: string = "/assets/images/default.png";
+  private reader: FileReader = new FileReader();
 
   constructor(public dialog: MatDialog, private fb: FormBuilder) {
     this.formGroup = fb.group({
@@ -81,6 +89,26 @@ export class EditComponent {
     this.methodFormGroup = fb.group({
       step: fb.control(''),
     });
+    // this is initializing the tag form group, adding a control with an empty value to the form
+    this.tagFormGroup = fb.group({
+      tag: fb.control('')
+    })
+  }
+
+  // image methods
+  selectImage(event: any){
+    const selectedFiles = event.target.files;
+    if (selectedFiles) {
+      const file: File|null = selectedFiles.item(0);
+      if (file) {
+        this.preview = '';
+        this.reader.onload = (e: any) => {
+          this.preview = e.target.result;
+          this.heroImageControl.setValue(this.preview);
+        };
+        this.reader.readAsDataURL(file);
+      }
+    }
   }
 
   // ingredients methods
@@ -109,19 +137,14 @@ export class EditComponent {
 
   
   // tag methods
-  add(event: MatChipInputEvent): void {
+  addTag(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
-    // Add our tag
     if (value) {
       this.tagsControl.push(this.fb.control(value));
     }
-    // Clear the input value
-    event.chipInput!.clear();
+    this.tagFormGroup.reset();
   }
-  remove(tag: string): void {
-    var controlIndex = this.tagsControl.value.findIndex(
-      (value) => value === tag
-    );
+  removeTag(controlIndex: number): void {
     this.tagsControl.removeAt(controlIndex);
   }
 
