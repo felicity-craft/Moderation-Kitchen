@@ -36,8 +36,14 @@ export class EditComponent {
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   // This is the main form which represents the recipe we are editing, and the helper properties.
   public formGroup: FormGroup;
-  public get tagsControl(): FormArray {
-    return this.formGroup.get('tags') as FormArray;
+  public get titleControl(): FormControl {
+    return this.formGroup.get('title') as FormControl;
+  }
+  public get slugControl(): FormControl {
+    return this.formGroup.get('slug') as FormControl;
+  }
+  public get heroImageControl(): FormControl {
+    return this.formGroup.get('heroImage') as FormControl;
   }
   public get ingredientsArray(): FormArray {
     return this.formGroup.get('ingredients') as FormArray;
@@ -51,8 +57,8 @@ export class EditComponent {
   public get methodControls(): FormControl[] {
     return this.methodArray.controls as FormControl[];
   }
-  public get heroImageControl(): FormControl {
-    return this.formGroup.get('heroImage') as FormControl;
+  public get tagsControl(): FormArray {
+    return this.formGroup.get('tags') as FormArray;
   }
   // this is the ingredient form which represents new ingredients to be added to the recipe.
   public ingredientFormGroup: FormGroup;
@@ -80,6 +86,11 @@ export class EditComponent {
       ingredients: fb.array([]),
       method: fb.array([]),
       tags: fb.array([]),
+    });
+    // whenever the title changes, update the slug by converting the tile to lower kebab case.
+    this.titleControl.valueChanges.subscribe((value: string) => {
+      const valueAsKebabCase = value.toLowerCase().replace(/ /g, '-');
+      this.slugControl.setValue(valueAsKebabCase)
     });
     // this is initializing the ingredient form group, adding a control with an empty value to the form
     this.ingredientFormGroup = fb.group({
