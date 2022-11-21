@@ -15,8 +15,6 @@ import { RecipeIndexComponent } from './components/recipe-index/recipe-index.com
 import { BreadcrumbModule } from 'xng-breadcrumb';
 import { ConfirmActionDialogComponent } from './components/confirm-action-dialog/confirm-action-dialog.component';
 import { EditComponent } from './components/edit/edit.component';
-import { EditIngredientComponent } from './components/edit-ingredient/edit-ingredient.component';
-import { EditMethodComponent } from './components/edit-method/edit-method.component';
 
 
 
@@ -33,8 +31,6 @@ import { EditMethodComponent } from './components/edit-method/edit-method.compon
     RecipeIndexComponent,
     ConfirmActionDialogComponent,
     EditComponent,
-    EditIngredientComponent,
-    EditMethodComponent,
   ],
   imports: [
     CommonModule,
