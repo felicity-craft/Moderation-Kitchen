@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { RecipeComment } from '../../interfaces/recipe-comment';
+import { RecipeComment } from '../../../core/interfaces/recipe-comment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 

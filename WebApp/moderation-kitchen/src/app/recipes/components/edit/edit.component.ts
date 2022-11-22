@@ -4,8 +4,8 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmScheduleDialogComponent } from '../../../admin/components/confirm-schedule-dialog/confirm-schedule-dialog.component';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { RecipeService } from '../../services/recipe.service';
 import { Router } from '@angular/router';
+import { RecipeService } from 'src/app/core/services/recipe.service';
 
 interface RecipeEditForm {
   slug: FormControl<string>;
