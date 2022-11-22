@@ -86,6 +86,30 @@ var RECIPES: Recipe[] = [
       },
     ],
   },
+  {
+    slug: 'cinnamon-rolls',
+    title: 'Cinnamon rolls',
+    author: 'Felicity Craft',
+    date: new Date('17 July 2022'),
+    intro: 'Some text here for intro',
+    heroImage: '/assets/images/post-images/buns.jpg',
+    body: 'Some text here for the body',
+    prepTime: '15 mins',
+    cookTime: '30 mins',
+    quantitySizeMade: '8inch cake',
+    ingredients: [{ quantity: '100g', ingredient: 'unsalted butter' }],
+    method: ['cream butter', 'add in eggs'],
+    tags: ['Cake', 'Chocolate'],
+    comments: [
+      {
+        rating: 5,
+        comment: 'this was yum',
+        name: 'Bobby Brown',
+        email: 'bb@example.com',
+        date: new Date("11/10/2022")
+      },
+    ],
+  },
 ];
 
 @Injectable({
@@ -111,12 +135,12 @@ export class RecipeService {
     recipe?.comments.push(recipeComment);
   }
 
-  getFeaturedRecipes(): Observable<Recipe[]> {
+  getFeaturedRecipes(count: number): Observable<Recipe[]> {
     // RECIPES is an array of Recipe interfaces which are not observable as is.
     // Observables are = something that can be subscribed to. They emit three kinds of events: next, complete, and error. 
     // Subscribers can listen for these events and take action when they occur.
     // of = make RECIPES into an observable
-    return of(RECIPES);
+    return of(RECIPES.slice(0, count));
   }
 
 }

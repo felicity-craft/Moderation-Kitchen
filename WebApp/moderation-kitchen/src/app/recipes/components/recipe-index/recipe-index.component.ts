@@ -17,7 +17,7 @@ export class RecipeIndexComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.featuredRecipes =  this.recipeService.getFeaturedRecipes();
+    this.featuredRecipes =  this.recipeService.getFeaturedRecipes(3);
   }
 
 }
