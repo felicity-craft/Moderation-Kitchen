@@ -42,6 +42,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { PageContainerComponent } from './components/page-container/page-container.component';
 import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
 import { ConfirmLogoutDialogComponent } from './components/confirm-logout-dialog/confirm-logout-dialog.component';
+import { LinkButtonComponent } from './components/link-button/link-button.component';
 
 
 @NgModule({
@@ -88,6 +89,7 @@ import { ConfirmLogoutDialogComponent } from './components/confirm-logout-dialog
     PageContainerComponent,
     AdminHeaderComponent,
     ConfirmLogoutDialogComponent,
+    LinkButtonComponent,
   ],
   exports: [
     CommonModule,
@@ -130,6 +132,7 @@ import { ConfirmLogoutDialogComponent } from './components/confirm-logout-dialog
     PageContainerComponent,
     AdminHeaderComponent,
     ConfirmLogoutDialogComponent,
+    LinkButtonComponent,
 
   ],
   providers:[

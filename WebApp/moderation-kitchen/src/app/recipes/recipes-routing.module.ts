@@ -4,6 +4,7 @@ import { RecipeIndexComponent } from './components/recipe-index/recipe-index.com
 import { RecipeComponent } from './components/recipe/recipe.component';
 import { EditComponent } from './components/edit/edit.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
+import { AllRecipesComponent } from './components/all-recipes/all-recipes.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
     path: 'new',
     component: EditComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'all-recipes',
+    component: AllRecipesComponent,
   },
   {
     path: ':slug',

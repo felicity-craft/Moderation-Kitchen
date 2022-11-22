@@ -1,10 +1,10 @@
 <app-page-container>
     <div class="header-container">
         <h2>Posts</h2>
-        <app-button >Create post</app-button>
+        <app-link-button href="/recipes/new">Create post</app-link-button>
     </div>
     <div class="table-container">
-        <app-post-table></app-post-table>
+        <app-post-table [recipes]="(recipes | async)"></app-post-table>
     </div>
 </app-page-container>
 

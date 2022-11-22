@@ -110,6 +110,30 @@ var RECIPES: Recipe[] = [
       },
     ],
   },
+  {
+    slug: 'banana-cake',
+    title: 'Banana cake',
+    author: 'Chester Craft',
+    date: new Date('17 July 2022'),
+    intro: 'Some text here for intro',
+    heroImage: '/assets/images/post-images/cereal.jpg',
+    body: 'Some text here for the body',
+    prepTime: '15 mins',
+    cookTime: '30 mins',
+    quantitySizeMade: '8inch cake',
+    ingredients: [{ quantity: '100g', ingredient: 'unsalted butter' }],
+    method: ['cream butter', 'add in eggs'],
+    tags: ['Cake', 'Chocolate'],
+    comments: [
+      {
+        rating: 4,
+        comment: 'this was yum!',
+        name: 'Bobby Brown',
+        email: 'bb@example.com',
+        date: new Date("11/10/2022")
+      },
+    ],
+  },
 ];
 
 @Injectable({
@@ -141,6 +165,10 @@ export class RecipeService {
     // Subscribers can listen for these events and take action when they occur.
     // of = make RECIPES into an observable
     return of(RECIPES.slice(0, count));
+  }
+
+  getAllRecipes(): Observable<Recipe[]> {
+    return of(RECIPES);
   }
 
 }

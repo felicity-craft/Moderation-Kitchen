@@ -1,4 +1,7 @@
 import { Component, OnInit} from '@angular/core';
+import { Observable, tap } from 'rxjs';
+import { Recipe } from 'src/app/core/interfaces/recipe';
+import { RecipeService } from 'src/app/core/services/recipe.service';
 
 
 @Component({
@@ -9,9 +12,14 @@ import { Component, OnInit} from '@angular/core';
 })
 export class AdminHomeComponent implements OnInit {
 
-  constructor() { }
+  public recipes: Observable<Recipe[]>
+  
+  constructor(
+    private recipeService: RecipeService,
+  ) { }
 
   ngOnInit(): void {
+  this.recipes = this.recipeService.getAllRecipes();
   }
 
 }

@@ -1,7 +1,7 @@
 <app-page-container>
   <ng-container *ngIf="(blogPosts|async) as blogPost">
     <div class="admin-button-container">
-      <app-button>Edit post</app-button>
+      <app-link-button href="/recipes/{{blogPost.slug}}/edit">Edit post</app-link-button>
       <app-button-stroked (click)="openDialog()">Delete</app-button-stroked>
     </div>
     <h2>{{blogPost.title}}</h2>
@@ -15,10 +15,6 @@
     <h4 id="recipe">{{blogPost.title}}</h4>
     <app-rating></app-rating>
     <app-preparation [prepTime]="blogPost.prepTime" [cookTime]="blogPost.cookTime" [quantitySizeMade]="blogPost.quantitySizeMade"></app-preparation>
-    <div class="button-container">
-      <app-button icon="print">Print recipe</app-button>
-      <app-button icon="share">Share recipe</app-button>
-    </div>
     <app-ingredients [ingredients]="blogPost.ingredients"></app-ingredients>
     <app-method [method]="blogPost.method"></app-method>
     <app-tags [tags]="blogPost.tags"></app-tags>
