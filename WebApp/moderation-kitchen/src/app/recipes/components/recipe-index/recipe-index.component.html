@@ -3,13 +3,17 @@
         <h2>Recipe index</h2>
     </div>
     <app-search-container></app-search-container>
-    <div class="featured-container">
-        <h4>Featured</h4>
-        <div class="featured-image-container">
-            <app-card src="/assets/images/feature-images/ginger-crunch.JPG" href="/recipes/chocolate-chunk-cookies" heading="Ginger crunch"></app-card>
-            <app-card src="/assets/images/feature-images/chocolate-macaron.JPG" href="/recipes/chocolate-chunk-cookies" heading="Chocolate macaron cake"></app-card>
-            <app-card src="/assets/images/feature-images/white-choc-raspberry.JPG" href="/recipes/chocolate-chunk-cookies" heading="White choc raspberry cake"></app-card>
+    <ng-container *ngIf="(featuredRecipes | async) as recipes">
+        <div class="featured-container">
+            <h4>Featured</h4>
+            <div class="featured-image-container">
+                <app-card *ngFor="let recipe of recipes" 
+                        [src]="recipe.heroImage" 
+                        href="/recipes/{{recipe.slug}}" 
+                        [title]="recipe.title">
+            </app-card>
+            </div>
         </div>
-    </div>
+    </ng-container>
     <app-button  trailingIcon="double_arrow">See all recipes</app-button>
 </app-page-container>

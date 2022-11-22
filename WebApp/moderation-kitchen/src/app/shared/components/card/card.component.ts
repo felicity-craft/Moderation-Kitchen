@@ -19,6 +19,6 @@ export class CardComponent implements OnInit {
   public  src?: string
 
   @Input()
-  public  heading?: string
+  public  title?: string
 
 }

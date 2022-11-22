@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { from, observable, Observable } from 'rxjs';
+import { from, Observable, of } from 'rxjs';
 import { Recipe } from '../interfaces/recipe';
 import { RecipeComment } from '../interfaces/recipe-comment';
 
@@ -109,6 +109,14 @@ export class RecipeService {
     recipeComment.date = new Date();
     const recipe = RECIPES.find((r) => r.slug === slug);
     recipe?.comments.push(recipeComment);
+  }
+
+  getFeaturedRecipes(): Observable<Recipe[]> {
+    // RECIPES is an array of Recipe interfaces which are not observable as is.
+    // Observables are = something that can be subscribed to. They emit three kinds of events: next, complete, and error. 
+    // Subscribers can listen for these events and take action when they occur.
+    // of = make RECIPES into an observable
+    return of(RECIPES);
   }
 
 }
