@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmActionDialogComponent } from '../confirm-action-dialog/confirm-action-dialog.component';
 import { Observable } from 'rxjs';
 import { Recipe } from '../../../core/interfaces/recipe';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeComment } from '../../../core/interfaces/recipe-comment';
 import { RecipeService } from 'src/app/core/services/recipe.service';
 import { ViewportScroller } from '@angular/common';
@@ -19,6 +19,7 @@ export class RecipeComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     public dialog: MatDialog,
     private recipeService: RecipeService,
     private viewportScroller: ViewportScroller,
@@ -30,7 +31,16 @@ export class RecipeComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(ConfirmActionDialogComponent);
+    const a = this.dialog.open(ConfirmActionDialogComponent);
+    a.afterClosed().subscribe({
+      next: (result) => {
+        console.log('result:', result)
+        if (result === 'delete') {
+          this.recipeService.deleteRecipe(this.slug);
+          this.router.navigateByUrl("/admin")
+        }
+      }
+    })
   }
 
   onSubmitComment(recipeComment: RecipeComment){

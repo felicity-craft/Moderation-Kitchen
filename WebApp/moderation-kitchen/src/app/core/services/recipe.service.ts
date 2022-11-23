@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { from, Observable, of } from 'rxjs';
+import { ConfirmActionDialogComponent } from 'src/app/recipes/components/confirm-action-dialog/confirm-action-dialog.component';
 import { Recipe } from '../interfaces/recipe';
 import { RecipeComment } from '../interfaces/recipe-comment';
 
@@ -140,6 +142,7 @@ var RECIPES: Recipe[] = [
   providedIn: 'root',
 })
 export class RecipeService {
+  private dialog: MatDialog;
   constructor() {}
 
   publishRecipe(recipe: Recipe): Observable<void> {
@@ -169,6 +172,13 @@ export class RecipeService {
 
   getAllRecipes(): Observable<Recipe[]> {
     return of(RECIPES);
+  }
+
+  deleteRecipe(slug: string) {
+    const index = RECIPES.findIndex(recipe => recipe.slug === slug);
+    // if no recipe is found with the requested slug, then we get back -1.
+    // if index does not = -1 (i.e. slug does exist), then remove element at index and only remove 1 element
+    if (index !== -1) RECIPES.splice(index, 1);
   }
 
 }
