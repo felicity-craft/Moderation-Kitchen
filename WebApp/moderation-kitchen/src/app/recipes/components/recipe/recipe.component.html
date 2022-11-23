@@ -6,13 +6,13 @@
     </div>
     <h2>{{blogPost.title}}</h2>
     <p>By {{blogPost.author}} ⦁ Published {{ blogPost.date | date:"MMM dd yyyy" }}</p>
-    <app-button icon="expand_more">Jump to recipe</app-button>
+    <app-button icon="expand_more" (click)="scrollToElement('recipeCard')">Jump to recipe</app-button>
     <p>{{blogPost.intro}}</p>
     <img [src]="blogPost.heroImage" class="recipe-hero-image" />
     <p>{{blogPost.body}}</p>
-    <hr>
+    <hr id="recipeCard">
     <img [src]="blogPost.heroImage" class="recipe-card-image"/>
-    <h4 id="recipe">{{blogPost.title}}</h4>
+    <h4>{{blogPost.title}}</h4>
     <app-rating></app-rating>
     <app-preparation [prepTime]="blogPost.prepTime" [cookTime]="blogPost.cookTime" [quantitySizeMade]="blogPost.quantitySizeMade"></app-preparation>
     <app-ingredients [ingredients]="blogPost.ingredients"></app-ingredients>

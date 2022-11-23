@@ -6,6 +6,7 @@ import { Recipe } from '../../../core/interfaces/recipe';
 import { ActivatedRoute } from '@angular/router';
 import { RecipeComment } from '../../../core/interfaces/recipe-comment';
 import { RecipeService } from 'src/app/core/services/recipe.service';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-recipe',
@@ -19,7 +20,8 @@ export class RecipeComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public dialog: MatDialog,
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    private viewportScroller: ViewportScroller,
   ) {}
 
   ngOnInit(): void {
@@ -33,5 +35,9 @@ export class RecipeComponent implements OnInit {
 
   onSubmitComment(recipeComment: RecipeComment){
     this.recipeService.submitComment(this.slug, recipeComment);
+  }
+
+  scrollToElement(elementId: string): void {
+    this.viewportScroller.scrollToAnchor(elementId);
   }
 }
