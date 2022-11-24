@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeComment } from '../../../core/interfaces/recipe-comment';
 import { RecipeService } from 'src/app/core/services/recipe.service';
 import { ViewportScroller } from '@angular/common';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 
 @Component({
   selector: 'app-recipe',
@@ -16,6 +17,9 @@ import { ViewportScroller } from '@angular/common';
 export class RecipeComponent implements OnInit {
   blogPosts!: Observable<Recipe>;
   public slug!: string;
+  public get showAdminButtons(): boolean{
+    return this.authService.loggedIn();
+  };
 
   constructor(
     private route: ActivatedRoute,
@@ -23,6 +27,7 @@ export class RecipeComponent implements OnInit {
     public dialog: MatDialog,
     private recipeService: RecipeService,
     private viewportScroller: ViewportScroller,
+    private authService: AuthenticationService,
   ) {}
 
   ngOnInit(): void {
@@ -34,16 +39,16 @@ export class RecipeComponent implements OnInit {
     const a = this.dialog.open(ConfirmActionDialogComponent);
     a.afterClosed().subscribe({
       next: (result) => {
-        console.log('result:', result)
+        console.log('result:', result);
         if (result === 'delete') {
           this.recipeService.deleteRecipe(this.slug);
-          this.router.navigateByUrl("/admin")
+          this.router.navigateByUrl('/admin');
         }
-      }
-    })
+      },
+    });
   }
 
-  onSubmitComment(recipeComment: RecipeComment){
+  onSubmitComment(recipeComment: RecipeComment) {
     this.recipeService.submitComment(this.slug, recipeComment);
   }
 

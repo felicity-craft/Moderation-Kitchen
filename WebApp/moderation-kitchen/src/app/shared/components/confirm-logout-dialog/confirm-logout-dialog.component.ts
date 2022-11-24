@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 export class ConfirmLogoutDialogComponent implements OnInit {
 
   constructor( 
-    // private authenticationService: AuthenticationService, 
     private router: Router)
     { }
 
@@ -28,7 +27,6 @@ export class ConfirmLogoutDialogComponent implements OnInit {
   logoutUser(){
     localStorage.removeItem('token');
     localStorage.removeItem('is_admin');
-    // need an on click action here to close the mat dialog box 
     this.router.navigate(['/admin/login']);
     return true;
   }

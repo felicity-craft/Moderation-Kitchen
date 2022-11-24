@@ -4,25 +4,8 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmScheduleDialogComponent } from '../../../admin/components/confirm-schedule-dialog/confirm-schedule-dialog.component';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeService } from 'src/app/core/services/recipe.service';
-
-interface RecipeEditForm {
-  slug: FormControl<string>;
-  title: FormControl<string>;
-  author: FormControl<string>;
-  date: FormControl<string>;
-  intro: FormControl<string>;
-  heroImage: FormControl<string>;
-  body: FormControl<string>;
-  printImage: FormControl<string>;
-  prepTime: FormControl<string>;
-  cookTime: FormControl<string>;
-  quantitySizeMade: FormControl<string>;
-  ingredients: FormArray<FormControl<string | null>>;
-  method: FormArray<FormControl<string | null>>;
-  tags: FormArray<FormControl<string | null>>;
-}
 
 export interface Tag {
   name: string;
@@ -59,8 +42,14 @@ export class EditComponent {
   public get methodControls(): FormControl[] {
     return this.methodArray.controls as FormControl[];
   }
-  public get tagsControl(): FormArray {
+  public get tagsArray(): FormArray {
     return this.formGroup.get('tags') as FormArray;
+  }
+  public get dateControl(): FormControl {
+    return this.formGroup.get('date') as FormControl;
+  }
+  public get isDraftControl(): FormControl {
+    return this.formGroup.get('isDraft') as FormControl;
   }
   // this is the ingredient form which represents new ingredients to be added to the recipe.
   public ingredientFormGroup: FormGroup;
@@ -71,15 +60,18 @@ export class EditComponent {
   // Image preview
   public preview: string = '/assets/images/default.png';
   private reader: FileReader = new FileReader();
+  private slug: string;
 
   constructor(
     public dialog: MatDialog,
     private fb: FormBuilder,
     private recipeService: RecipeService,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
   ) {
     this.formGroup = fb.group({
       slug: fb.control(''),
+      isDraft: fb.control(false),
       title: fb.control(''),
       author: fb.control('Felicity'),
       date: fb.control(new Date()),
@@ -110,6 +102,27 @@ export class EditComponent {
     this.tagFormGroup = fb.group({
       tag: fb.control(''),
     });
+  }
+
+  ngOnInit(): void {
+   this.slug  = this.activatedRoute.snapshot.paramMap.get("slug");
+   if (this.slug) {
+      this.recipeService.getRecipeBySlug(this.slug).subscribe({
+        next: recipe => {
+          this.formGroup.patchValue(recipe);
+          this.preview = recipe.heroImage;
+          // go to recipe, ask for the ingredients, it gives us each ingredient one by one and we map the ingredient into a form control. 
+          // Finally, we store all of these controls in the const ingredientControls.
+          const ingredientControls =  recipe.ingredients.map(ingredient => this.fb.control(ingredient));
+          // tell ingredientsArray to use new shiny controls (ingredientControls) instead of whatever controls it had before.
+          this.ingredientsArray.controls = ingredientControls;
+          const methodControls =  recipe.method.map(method => this.fb.control(method));
+          this.methodArray.controls = methodControls;
+          const tagControls =  recipe.tags.map(tag => this.fb.control(tag));
+          this.tagsArray.controls = tagControls;
+        }
+      })
+   }
   }
 
   // image methods
@@ -152,25 +165,49 @@ export class EditComponent {
   addTag(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
     if (value) {
-      this.tagsControl.push(this.fb.control(value));
+      this.tagsArray.push(this.fb.control(value));
     }
     this.tagFormGroup.reset();
   }
   removeTag(controlIndex: number): void {
-    this.tagsControl.removeAt(controlIndex);
+    this.tagsArray.removeAt(controlIndex);
   }
 
-  // publish method
-  publishRecipe() {
+  // save recipe content method
+  saveRecipe() {
     this.recipeService
-      .publishRecipe(this.formGroup.value)
+      .saveRecipe(this.formGroup.value)
       .subscribe({
         complete: () => this.router.navigateByUrl(`/recipes/${this.slugControl.value}`)
       });
   }
 
+  // publish method
+  publishRecipe() {
+    this.isDraftControl.setValue(false);
+    this.saveRecipe();
+  }
+
+  // save draft method
+  saveDraft() {
+    this.isDraftControl.setValue(true);
+    this.saveRecipe();
+  }
+
   // scheduled method
   openDialog() {
-    this.dialog.open(ConfirmScheduleDialogComponent);
+    const dialogRef = this.dialog.open(ConfirmScheduleDialogComponent);
+    dialogRef.afterClosed().subscribe({
+      next: (result) => {
+      console.log('result:', result);
+      if (result) {
+        this.dateControl.setValue(result.date);
+        this.publishRecipe();
+      }
+      }
+    });
+    
   }
+
+
 }

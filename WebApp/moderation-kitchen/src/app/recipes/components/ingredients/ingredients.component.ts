@@ -9,7 +9,7 @@ import { Ingredient } from '../../../core/interfaces/ingredient';
 export class IngredientsComponent implements OnInit {
 
   @Input()
-  public ingredients?: Ingredient[];
+  public ingredients?: string[];
 
   constructor() { }
 

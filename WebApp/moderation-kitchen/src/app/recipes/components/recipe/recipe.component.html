@@ -1,6 +1,6 @@
 <app-page-container>
-  <ng-container *ngIf="(blogPosts|async) as blogPost">
-    <div class="admin-button-container">
+  <ng-container *ngIf="(blogPosts|async) as blogPost; else notFound">
+    <div class="admin-button-container" *ngIf="showAdminButtons">
       <app-link-button href="/recipes/{{blogPost.slug}}/edit">Edit post</app-link-button>
       <app-button-stroked (click)="openDialog()">Delete</app-button-stroked>
     </div>
@@ -23,3 +23,7 @@
     <app-recipe-comment-section [comments]="blogPost.comments" (commentSubmittedEvent)="onSubmitComment($event)"></app-recipe-comment-section>
   </ng-container>
 </app-page-container>
+<ng-template #notFound>
+  <p>Sorry, we couldn't find the page you were looking for. <a href="/">Click here to return home.</a> </p>
+</ng-template>
+

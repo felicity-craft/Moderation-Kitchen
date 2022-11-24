@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
+import { AuthenticationService } from './shared/services/authentication.service';
 
 
 @Component({
@@ -13,9 +14,10 @@ export class AppComponent {
 public showAdminHeader: boolean = true;
 
 constructor(
-  location: Location
+  location: Location,
+  private authService: AuthenticationService,
   ) { 
-    this.showAdminHeader = location.path().startsWith("/admin");
+    this.showAdminHeader = this.authService.loggedIn();
   }
 
 

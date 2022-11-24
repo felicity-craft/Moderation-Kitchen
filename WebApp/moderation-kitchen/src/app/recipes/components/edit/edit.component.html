@@ -2,7 +2,7 @@
   <div class="button-container">
     <app-button (click)="publishRecipe()">Publish</app-button>
     <app-button-stroked (click)="openDialog()">Schedule</app-button-stroked>
-    <app-button-stroked>Save draft</app-button-stroked>
+    <app-button-stroked (click)="saveDraft()">Save draft</app-button-stroked>
   </div>
   <form [formGroup]="formGroup">
     <mat-form-field appearance="outline" class="full-width">
@@ -71,7 +71,7 @@
       <hr />
     </div>
     <div class="step-container">
-      <!-- this represents the inredients that have been added to the recipe -->
+      <!-- this represents the ingredients that have been added to the recipe -->
       <div
         *ngFor="let control of ingredientControls; let i = index"
         class="row-container"
@@ -134,7 +134,7 @@
       <mat-form-field class="tag-list" appearance="outline">
         <mat-label>Tags</mat-label>
         <mat-chip-list #chipList aria-label="Tag selection">
-          <mat-chip *ngFor="let tag of tagsControl.value; let i = index" (removed)="removeTag(i)">
+          <mat-chip *ngFor="let tag of tagsArray.value; let i = index" (removed)="removeTag(i)">
             {{ tag }}
             <button matChipRemove>
               <mat-icon>cancel</mat-icon>

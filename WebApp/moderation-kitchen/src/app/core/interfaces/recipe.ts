@@ -3,6 +3,7 @@ import { RecipeComment } from "./recipe-comment";
 
 export interface Recipe {
   slug: string;
+  isDraft: boolean;
   title: string;
   author: string;
   date: Date;
@@ -12,7 +13,7 @@ export interface Recipe {
   prepTime: string;
   cookTime: string;
   quantitySizeMade: string;
-  ingredients: Ingredient[];
+  ingredients: string[];
   method: string[];
   tags: string[];
   comments: RecipeComment[];
