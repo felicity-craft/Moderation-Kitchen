@@ -27,6 +27,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 import { HeaderComponent } from './components/header/header.component';
@@ -71,6 +72,7 @@ import { LinkButtonComponent } from './components/link-button/link-button.compon
     MatSortModule,
     MatDialogModule,
     MatToolbarModule,
+    MatAutocompleteModule,
 
     FontAwesomeModule,
     BreadcrumbModule,
@@ -119,6 +121,7 @@ import { LinkButtonComponent } from './components/link-button/link-button.compon
     MatSortModule,
     MatDialogModule,
     MatToolbarModule,
+    MatAutocompleteModule,
 
     HeaderComponent,
     FooterComponent,

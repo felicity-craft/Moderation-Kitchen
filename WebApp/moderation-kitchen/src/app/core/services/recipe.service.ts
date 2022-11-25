@@ -145,6 +145,16 @@ var RECIPES: Recipe[] = [
   providedIn: 'root',
 })
 export class RecipeService {
+  searchForRecipe(value: string): Recipe[] {
+    // If value is empty, null or undefined, then return an empty result.
+    if (value === '' || !value) {
+      return new Array<Recipe>();
+    }
+    // Otherwise return recipes which have a title that contains the value.
+    // This is case insensitive.
+    const filterValue = value.toLowerCase();
+    return RECIPES.filter(recipe => recipe.title.toLowerCase().includes(filterValue));
+  }
   private dialog: MatDialog;
   constructor(private authService: AuthenticationService) {}
 
