@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { map, Observable, startWith } from 'rxjs';
+import { map, mergeMap, Observable, startWith } from 'rxjs';
 import { RecipeService } from 'src/app/core/services/recipe.service';
 
 @Component({
@@ -11,7 +11,6 @@ import { RecipeService } from 'src/app/core/services/recipe.service';
 export class HeaderComponent implements OnInit {
 
 recipeSearchControl= new FormControl('');
-recipes: {title: string, slug: string}[] = [{title: 'Chocolate chunk cookies', slug: 'chocolate-chunk-cookies'}, {title: 'Vanilla cake', slug: 'vanilla-cake'}, {title: 'Banana cake', slug: 'banana-cake'}];
 filteredRecipes: Observable<{title: string, slug: string}[]>;
 
   constructor(
@@ -27,7 +26,7 @@ filteredRecipes: Observable<{title: string, slug: string}[]>;
     // Maps' return value gets dropped into filteredRecipes.
     // Filtered recipes then broadcasts the return value to view.
     this.filteredRecipes = this.recipeSearchControl.valueChanges.pipe(
-      map(value => this.recipeService.searchForRecipe(value))
+      mergeMap(value => this.recipeService.searchForRecipe(value))
     );
   }
 

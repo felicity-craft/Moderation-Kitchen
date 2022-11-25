@@ -1,5 +1,5 @@
-import { Ingredient } from "./ingredient";
 import { RecipeComment } from "./recipe-comment";
+import { RecipeRating } from "./recipe-rating";
 
 export interface Recipe {
   slug: string;
@@ -10,6 +10,7 @@ export interface Recipe {
   intro: string;
   heroImage: string;
   body: string;
+  rating: RecipeRating;
   prepTime: string;
   cookTime: string;
   quantitySizeMade: string;

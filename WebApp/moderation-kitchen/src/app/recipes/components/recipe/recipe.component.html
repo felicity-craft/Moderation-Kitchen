@@ -13,7 +13,7 @@
     <hr id="recipeCard">
     <img [src]="blogPost.heroImage" class="recipe-card-image"/>
     <h4>{{blogPost.title}}</h4>
-    <app-rating></app-rating>
+    <app-rating [rating]="blogPost.rating"></app-rating>
     <app-preparation [prepTime]="blogPost.prepTime" [cookTime]="blogPost.cookTime" [quantitySizeMade]="blogPost.quantitySizeMade"></app-preparation>
     <app-ingredients [ingredients]="blogPost.ingredients"></app-ingredients>
     <app-method [method]="blogPost.method"></app-method>

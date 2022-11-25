@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { mergeMap, Observable } from 'rxjs';
+import { RecipeService } from 'src/app/core/services/recipe.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { ConfirmLogoutDialogComponent } from '../confirm-logout-dialog/confirm-logout-dialog.component';
 
@@ -14,13 +17,19 @@ export class AdminHeaderComponent implements OnInit {
   {
     return this.authService.loggedIn();
   }
+  recipeSearchControl= new FormControl('');
+  filteredRecipes: Observable<{title: string, slug: string}[]>;
 
   constructor(
     public dialog: MatDialog,
     private authService: AuthenticationService,
+    private recipeService: RecipeService,
   ) { }
 
   ngOnInit(): void {
+    this.filteredRecipes = this.recipeSearchControl.valueChanges.pipe(
+      mergeMap(value => this.recipeService.searchForRecipe(value))
+    );
   }
 
   openDialog() {

@@ -4,11 +4,27 @@
             <app-button (click)="openDialog()" *ngIf="showLogout">Log out</app-button>
         </div>
         <div class="search-container">
-                <mat-form-field appearance="outline" >
-                    <input placeholder="Search" matInput >
-                    <mat-icon matSuffix>search</mat-icon>
-                </mat-form-field>
-        </div>
+            <mat-form-field appearance="outline">
+              <input
+                type="text"
+                placeholder="Search"
+                matInput
+                [formControl]="recipeSearchControl"
+                [matAutocomplete]="auto"
+              />
+              <mat-icon matSuffix>search</mat-icon>
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option
+                  *ngFor="let recipe of filteredRecipes | async"
+                  [value]="recipe.title"
+                >
+                  <a href="/recipes/{{recipe.slug}}">
+                      {{ recipe.title }}
+                  </a>
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
     </div>
 </div>
 

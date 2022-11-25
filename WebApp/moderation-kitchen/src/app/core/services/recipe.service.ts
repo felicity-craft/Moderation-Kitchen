@@ -16,6 +16,7 @@ var RECIPES: Recipe[] = [
     intro: 'Some text here for intro',
     heroImage: '/assets/images/post-images/buns.jpg',
     body: 'Some text here for the body',
+    rating: {averageRating: 4.5, timesRated: 10},
     prepTime: '15 mins',
     cookTime: '30 mins',
     quantitySizeMade: '8inch cake',
@@ -40,6 +41,7 @@ var RECIPES: Recipe[] = [
     date: new Date('17 July 2022'),
     intro: 'Some text here for intro',
     heroImage: '/assets/images/post-images/cereal.jpg',
+    rating: {averageRating: 4.5, timesRated: 10},
     body: 'Some text here for the body',
     prepTime: '15 mins',
     cookTime: '30 mins',
@@ -66,6 +68,7 @@ var RECIPES: Recipe[] = [
     intro: 'Some text here for intro',
     heroImage: '/assets/images/post-images/fruits.jpg',
     body: 'Some text here for the body',
+    rating: {averageRating: 4, timesRated: 10},
     prepTime: '15 mins',
     cookTime: '30 mins',
     quantitySizeMade: '15 cookies',
@@ -98,6 +101,7 @@ var RECIPES: Recipe[] = [
     intro: 'Some text here for intro',
     heroImage: '/assets/images/post-images/buns.jpg',
     body: 'Some text here for the body',
+    rating: {averageRating: 4.5, timesRated: 10},
     prepTime: '15 mins',
     cookTime: '30 mins',
     quantitySizeMade: '8inch cake',
@@ -123,6 +127,7 @@ var RECIPES: Recipe[] = [
     intro: 'Some text here for intro',
     heroImage: '/assets/images/post-images/cereal.jpg',
     body: 'Some text here for the body',
+    rating: {averageRating: 4.5, timesRated: 10},
     prepTime: '15 mins',
     cookTime: '30 mins',
     quantitySizeMade: '8inch cake',
@@ -145,15 +150,15 @@ var RECIPES: Recipe[] = [
   providedIn: 'root',
 })
 export class RecipeService {
-  searchForRecipe(value: string): Recipe[] {
+  searchForRecipe(value: string): Observable<Recipe[]> {
     // If value is empty, null or undefined, then return an empty result.
     if (value === '' || !value) {
-      return new Array<Recipe>();
+      return of (new Array<Recipe>());
     }
     // Otherwise return recipes which have a title that contains the value.
     // This is case insensitive.
     const filterValue = value.toLowerCase();
-    return RECIPES.filter(recipe => recipe.title.toLowerCase().includes(filterValue));
+    return of (RECIPES.filter(recipe => recipe.title.toLowerCase().includes(filterValue)));
   }
   private dialog: MatDialog;
   constructor(private authService: AuthenticationService) {}

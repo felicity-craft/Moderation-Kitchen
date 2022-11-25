@@ -1,10 +1,7 @@
 <div class="recipe-rating-container">
     <div class="rating-input-container">
-        <fa-icon [icon]="faStarSolid" size="xl"></fa-icon>
-        <fa-icon [icon]="faStarSolid" size="xl"></fa-icon>
-        <fa-icon [icon]="faStarSolid" size="xl"></fa-icon>
-        <fa-icon [icon]="faStarSolid" size="xl"></fa-icon>
-        <fa-icon [icon]="faStarHalfStroke" size="xl"></fa-icon>
+        <fa-icon *ngFor="let star of stars" [icon]="iconClass[star]" size="xl"></fa-icon>
     </div>
-    <p> 4.5 from 13 votes</p>
+    <p> {{rating.averageRating}} from {{rating.timesRated}} votes</p>
 </div>
+
