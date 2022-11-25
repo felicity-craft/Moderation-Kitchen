@@ -68,7 +68,6 @@ var RECIPES: Recipe[] = [
     intro: 'Some text here for intro',
     heroImage: '/assets/images/post-images/fruits.jpg',
     body: 'Some text here for the body',
-    rating: {averageRating: 4, timesRated: 10},
     prepTime: '15 mins',
     cookTime: '30 mins',
     quantitySizeMade: '15 cookies',

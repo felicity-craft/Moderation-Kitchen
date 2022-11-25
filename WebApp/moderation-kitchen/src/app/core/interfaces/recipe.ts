@@ -10,7 +10,7 @@ export interface Recipe {
   intro: string;
   heroImage: string;
   body: string;
-  rating: RecipeRating;
+  rating?: RecipeRating;
   prepTime: string;
   cookTime: string;
   quantitySizeMade: string;

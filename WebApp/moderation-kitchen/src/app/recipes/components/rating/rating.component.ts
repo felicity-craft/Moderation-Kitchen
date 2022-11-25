@@ -35,7 +35,7 @@ export class RatingComponent implements OnInit {
   }
 
   fillStars(){
-    var starsToFill = Math.round(this.rating.averageRating * 2)/2; //round to nearest 0.5
+    var starsToFill = Math.round((this.rating?.averageRating || 0) * 2)/2; //round to nearest 0.5
     var i = 0;
     while(starsToFill > 0.5){
       this.stars[i] = 1;

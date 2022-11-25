@@ -1,7 +1,16 @@
 <div class="recipe-rating-container">
+  <ng-container *ngIf="rating; else elseTemplate">
     <div class="rating-input-container">
-        <fa-icon *ngFor="let star of stars" [icon]="iconClass[star]" size="xl"></fa-icon>
+      <fa-icon
+        *ngFor="let star of stars"
+        [icon]="iconClass[star]"
+        size="xl"
+      ></fa-icon>
     </div>
-    <p> {{rating.averageRating}} from {{rating.timesRated}} votes</p>
+    <p>{{ rating.averageRating }} from {{ rating.timesRated }} votes</p>
+  </ng-container>
 </div>
 
+<ng-template #elseTemplate>
+  <p>This recipe hasn't been rated yet.</p>
+</ng-template>
