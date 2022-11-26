@@ -64,7 +64,7 @@ public class RecipesController: ControllerBase
             recipes.Add(recipe!);
         }
 
-        return recipes;
+        return recipes.OrderByDescending(recipe => recipe.Date).ToList();
     }
 
     [HttpGet("featured")]
