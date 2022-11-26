@@ -1,0 +1,6 @@
+GET https://localhost:7264/api/recipes HTTP/1.1
+Origin: http://example.com
+
+### 
+OPTIONS  https://localhost:7264 HTTP/1.1
+Origin: http://localhost:4200
