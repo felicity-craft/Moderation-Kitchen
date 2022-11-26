@@ -9,9 +9,22 @@ builder.Services.AddControllers();
 builder.Services.AddTransient<IFileSystem, FileSystem>();
 
 // Configures the JsonSerializer when we read/write Json files.
-builder.Services.AddTransient(_ => new JsonSerializerOptions {
+builder.Services.AddTransient(_ => new JsonSerializerOptions
+{
     PropertyNameCaseInsensitive = true,
     WriteIndented = true,
+});
+
+var config = builder.Configuration;
+
+builder.Services.AddCors(cfg =>
+{
+    cfg.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyHeader()
+              .WithOrigins(config.GetValue<string>("AllowedHosts"))
+              .AllowAnyMethod();
+    });
 });
 
 // Builds our web application. If not done, nothing will be listening for HTTP requests.
@@ -20,5 +33,8 @@ var app = builder.Build();
 // This tells Asp.Net Core to build a route map based on the route attributes defined in our controllers.
 // If we don't do this, we have a HTTP server but requests won't go anywhere.
 app.MapControllers();
+
+app.UseCors();
+// app.UseCors(cfg => cfg.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
 app.Run();
