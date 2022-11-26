@@ -9,12 +9,12 @@ public record Recipe(
     string Intro,
     string HeroImage,
     string Body,
-    RecipeRating Rating,
+    RecipeRating? Rating,
     string PrepTime,
     string CookTime,
     string QuantitySizeMade,
     IReadOnlyList<string> Ingredients,
     IReadOnlyList<string> Method,
     IReadOnlyList<string> Tags,
-    IReadOnlyList<RecipeComment> Comments
+    IReadOnlyList<RecipeComment>? Comments
 );

@@ -23,7 +23,8 @@ public class RecipesController: ControllerBase
 
     [HttpGet()]
     [Route ("{slug}", Order = 1)]
-    public async Task<IActionResult> GetBySlug([FromRoute] string slug, CancellationToken ct){
+    public async Task<IActionResult> GetBySlug([FromRoute] string slug, CancellationToken ct)
+    {
         this.logger.LogInformation("Trying to get recipe with slug {slug}", slug);
         string recipeFilePath = Path.Join(this.dataDirectoryPath, $"{slug}.json");
         if (this.fileSystem.File.Exists(recipeFilePath))
@@ -40,7 +41,8 @@ public class RecipesController: ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAllRecipes(CancellationToken ct){
+    public async Task<IActionResult> GetAllRecipes(CancellationToken ct)
+    {
         if (this.fileSystem.Directory.Exists(this.dataDirectoryPath))
         {
             List<Recipe> recipes = await DeserializeAllRecipes(ct);
@@ -66,7 +68,8 @@ public class RecipesController: ControllerBase
     }
 
     [HttpGet("featured")]
-    public async Task<IActionResult> GetFeaturedRecipes([FromQuery] int limit,CancellationToken ct){
+    public async Task<IActionResult> GetFeaturedRecipes([FromQuery] int limit,CancellationToken ct)
+    {
         if (this.fileSystem.Directory.Exists(this.dataDirectoryPath))
         {
             var recipes = await this.DeserializeAllRecipes(ct);
@@ -75,4 +78,16 @@ public class RecipesController: ControllerBase
         return this.Ok(Array.Empty<Recipe>());
     }
 
+    [HttpPost]
+    public async Task<IActionResult> CreateRecipe([FromBody] Recipe recipe, CancellationToken ct) 
+    {
+        string recipeFilePath = Path.Join(this.dataDirectoryPath, $"{recipe.Slug}.json");
+        if (this.fileSystem.File.Exists(recipeFilePath))
+        {
+            return this.Conflict();
+        }
+        using Stream stream = this.fileSystem.File.OpenWrite(recipeFilePath);
+        await JsonSerializer.SerializeAsync<Recipe>(stream, recipe, this.jsonOptions, ct);
+        return this.Created($"/api/recipes/{recipe.Slug}", recipe);
+    }
 }

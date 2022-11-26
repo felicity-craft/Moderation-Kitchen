@@ -1,0 +1,38 @@
+{
+  "Slug": "chocolate-cookies",
+  "IsDraft": true,
+  "Title": "Chocolate cookies",
+  "Author": "Felicity Craft",
+  "Date": "2022-07-17T00:00:00",
+  "Intro": "Some text here for intro",
+  "HeroImage": "/assets/images/post-images/buns.jpg",
+  "Body": "Some text here for the body",
+  "Rating": {
+    "AverageRating": 4.5,
+    "TimesRated": 10
+  },
+  "PrepTime": "15 mins",
+  "CookTime": "30 mins",
+  "QuantitySizeMade": "8inch cake",
+  "Ingredients": [
+    "unsalted butter",
+    "flour"
+  ],
+  "Method": [
+    "cream butter",
+    "add in eggs"
+  ],
+  "Tags": [
+    "Cake",
+    "Chocolate"
+  ],
+  "Comments": [
+    {
+      "Rating": 5,
+      "Comment": "this was yum",
+      "Name": "Bobby Brown",
+      "Email": "bb@example.com",
+      "Date": "2022-08-19T00:00:00"
+    }
+  ]
+}
