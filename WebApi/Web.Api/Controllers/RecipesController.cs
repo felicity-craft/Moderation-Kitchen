@@ -41,12 +41,13 @@ public class RecipesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAllRecipes(CancellationToken ct)
+    public async Task<IActionResult> GetAllRecipes([FromQuery] string filter, CancellationToken ct)
     {
         if (this.fileSystem.Directory.Exists(this.dataDirectoryPath))
         {
             List<Recipe> recipes = await DeserializeAllRecipes(ct);
-            return this.Ok(recipes);
+            if (filter is null) return this.Ok(recipes);
+            return this.Ok(recipes.Where(recipe => recipe.Title.Contains(filter, StringComparison.CurrentCultureIgnoreCase)));
         }
         return this.Ok(Array.Empty<Recipe>());
     }
