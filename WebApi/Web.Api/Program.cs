@@ -22,7 +22,7 @@ builder.Services.AddCors(cfg =>
     cfg.AddDefaultPolicy(policy =>
     {
         policy.AllowAnyHeader()
-              .WithOrigins(config.GetValue<string>("AllowedHosts"))
+              .AllowAnyOrigin()
               .AllowAnyMethod();
     });
 });

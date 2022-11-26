@@ -21,7 +21,8 @@ public class RecipesController: ControllerBase
         this.logger = logger;
     }
 
-    [HttpGet("{slug}")]
+    [HttpGet()]
+    [Route ("{slug}", Order = 1)]
     public async Task<IActionResult> GetBySlug([FromRoute] string slug, CancellationToken ct){
         this.logger.LogInformation("Trying to get recipe with slug {slug}", slug);
         string recipeFilePath = Path.Join(this.dataDirectoryPath, $"{slug}.json");
@@ -42,17 +43,34 @@ public class RecipesController: ControllerBase
     public async Task<IActionResult> GetAllRecipes(CancellationToken ct){
         if (this.fileSystem.Directory.Exists(this.dataDirectoryPath))
         {
-            // Loops through each json file in our dataDirectory and converts the contents of each file into a Recipe object.
-            // Each Recipe object is added to a single list called recipes which gets returned.
-            string[] jsonFilePaths = this.fileSystem.Directory.GetFiles(this.dataDirectoryPath, "*.json");
-            var recipes = new List<Recipe>();
-            foreach (var filePath in jsonFilePaths)
-            {
-                using Stream stream = this.fileSystem.File.OpenRead(filePath);
-                var recipe = await JsonSerializer.DeserializeAsync<Recipe>(stream, this.jsonOptions, ct);
-                recipes.Add(recipe!);
-            }
+            List<Recipe> recipes = await DeserializeAllRecipes(ct);
             return this.Ok(recipes);
+        }
+        return this.Ok(Array.Empty<Recipe>());
+    }
+
+    private async Task<List<Recipe>> DeserializeAllRecipes(CancellationToken ct)
+    {
+        // Loops through each json file in our dataDirectory and converts the contents of each file into a Recipe object.
+        // Each Recipe object is added to a single list called recipes which gets returned.
+        string[] jsonFilePaths = this.fileSystem.Directory.GetFiles(this.dataDirectoryPath, "*.json");
+        var recipes = new List<Recipe>();
+        foreach (var filePath in jsonFilePaths)
+        {
+            using Stream stream = this.fileSystem.File.OpenRead(filePath);
+            var recipe = await JsonSerializer.DeserializeAsync<Recipe>(stream, this.jsonOptions, ct);
+            recipes.Add(recipe!);
+        }
+
+        return recipes;
+    }
+
+    [HttpGet("featured")]
+    public async Task<IActionResult> GetFeaturedRecipes([FromQuery] int limit,CancellationToken ct){
+        if (this.fileSystem.Directory.Exists(this.dataDirectoryPath))
+        {
+            var recipes = await this.DeserializeAllRecipes(ct);
+            return this.Ok(recipes.Take(limit));
         }
         return this.Ok(Array.Empty<Recipe>());
     }
