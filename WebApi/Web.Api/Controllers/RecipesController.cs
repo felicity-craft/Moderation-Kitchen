@@ -7,7 +7,7 @@ namespace ModerationKitchen.Web.Api.Controllers;
 
 [ApiController]
 [Route("api/recipes")]
-public class RecipesController: ControllerBase
+public class RecipesController : ControllerBase
 {
     private readonly string dataDirectoryPath = "/Users/fliss/Desktop/VS Projects/ModerationKitchen/WebApi/Web.Api/Data";
     private readonly IFileSystem fileSystem;
@@ -22,7 +22,7 @@ public class RecipesController: ControllerBase
     }
 
     [HttpGet()]
-    [Route ("{slug}", Order = 1)]
+    [Route("{slug}", Order = 1)]
     public async Task<IActionResult> GetBySlug([FromRoute] string slug, CancellationToken ct)
     {
         this.logger.LogInformation("Trying to get recipe with slug {slug}", slug);
@@ -68,7 +68,7 @@ public class RecipesController: ControllerBase
     }
 
     [HttpGet("featured")]
-    public async Task<IActionResult> GetFeaturedRecipes([FromQuery] int limit,CancellationToken ct)
+    public async Task<IActionResult> GetFeaturedRecipes([FromQuery] int limit, CancellationToken ct)
     {
         if (this.fileSystem.Directory.Exists(this.dataDirectoryPath))
         {
@@ -79,7 +79,7 @@ public class RecipesController: ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateRecipe([FromBody] Recipe recipe, CancellationToken ct) 
+    public async Task<IActionResult> CreateRecipe([FromBody] Recipe recipe, CancellationToken ct)
     {
         string recipeFilePath = Path.Join(this.dataDirectoryPath, $"{recipe.Slug}.json");
         if (this.fileSystem.File.Exists(recipeFilePath))
@@ -89,5 +89,18 @@ public class RecipesController: ControllerBase
         using Stream stream = this.fileSystem.File.OpenWrite(recipeFilePath);
         await JsonSerializer.SerializeAsync<Recipe>(stream, recipe, this.jsonOptions, ct);
         return this.Created($"/api/recipes/{recipe.Slug}", recipe);
+    }
+
+    [HttpDelete("{slug}")]
+    public IActionResult DeleteRecipe([FromRoute] string slug)
+    {
+        string recipeFilePath = Path.Join(this.dataDirectoryPath, $"{slug}.json");
+        if (this.fileSystem.File.Exists(recipeFilePath))
+        {
+            this.fileSystem.File.Delete(recipeFilePath);
+            return this.NoContent();
+        }
+        this.logger.LogWarning("Cannot delete recipe. No recipe found with slug {slug}", slug);
+        return this.NotFound();
     }
 }
