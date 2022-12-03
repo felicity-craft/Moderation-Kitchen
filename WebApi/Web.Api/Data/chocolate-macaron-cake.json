@@ -1,38 +1,38 @@
 {
-  "slug": "chocolate-macaron-cake",
-  "isDraft": true,
-  "title": "Chocolate macaron cake",
-  "author": "Felicity Craft",
-  "date": "2022-07-17",
-  "intro": "Some text here for intro",
-  "heroImage": "/assets/images/post-images/buns.jpg",
-  "body": "Some text here for the body",
-  "rating": {
-    "averageRating": 4.5,
-    "timesRated": 10
+  "Slug": "chocolate-macaron-cake",
+  "IsDraft": true,
+  "Title": "Chocolate macaron cake",
+  "Author": "Felicity Craft",
+  "Date": "2022-07-17T00:00:00",
+  "Intro": "Some text here for intro",
+  "HeroImage": "/assets/images/post-images/buns.jpg",
+  "Body": "Some text here for the body",
+  "Rating": {
+    "AverageRating": 5,
+    "TimesRated": 1
   },
-  "prepTime": "15 mins",
-  "cookTime": "30 mins",
-  "quantitySizeMade": "8inch cake",
-  "ingredients": [
+  "PrepTime": "15 mins",
+  "CookTime": "30 mins",
+  "QuantitySizeMade": "8inch cake",
+  "Ingredients": [
     "unsalted butter",
     "flour"
   ],
-  "method": [
+  "Method": [
     "cream butter",
     "add in eggs"
   ],
-  "tags": [
+  "Tags": [
     "Cake",
     "Chocolate"
   ],
-  "comments": [
+  "Comments": [
     {
-      "rating": 5,
-      "comment": "this was yum",
-      "name": "Bobby Brown",
-      "email": "bb@example.com",
-      "date": "2022-08-19"
+      "Rating": 5,
+      "Comment": "test",
+      "Name": "test",
+      "Email": "test@gmail.com",
+      "Date": "2022-12-02T08:56:30.275Z"
     }
   ]
 }

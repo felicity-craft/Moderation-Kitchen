@@ -30,7 +30,7 @@
     </app-button>
   </div>
   <div class="comment-section">
-    <h3>1 comment on "Chocolate chunk cookies"</h3>
+    <h3>{{ comments.length }} {{comments.length === 1 ? 'comment' : 'comments'}} on {{ title }}</h3>
     <hr />
     <div *ngFor="let comment of comments" class="comments">
       <p>

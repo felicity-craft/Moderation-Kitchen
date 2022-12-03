@@ -7,7 +7,7 @@
         size="xl"
       ></fa-icon>
     </div>
-    <p>{{ rating.averageRating }} from {{ rating.timesRated }} votes</p>
+    <p>{{ rating.averageRating | number: '1.0-1' }} from {{ rating.timesRated }} {{rating.timesRated === 1 ? 'vote' : 'votes'}}</p>
   </ng-container>
 </div>
 

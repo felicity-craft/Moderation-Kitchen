@@ -111,7 +111,7 @@ export class EditComponent {
         next: recipe => {
           this.formGroup.patchValue(recipe);
           this.preview = recipe.heroImage;
-          // go to recipe, ask for the ingredients, it gives us each ingredient one by one and we map the ingredient into a form control. 
+          // go to recipe, ask for the ingredients, it gives us each ingredient one by one and we map the ingredient into a form control.
           // Finally, we store all of these controls in the const ingredientControls.
           const ingredientControls =  recipe.ingredients.map(ingredient => this.fb.control(ingredient));
           // tell ingredientsArray to use new shiny controls (ingredientControls) instead of whatever controls it had before.
@@ -173,13 +173,22 @@ export class EditComponent {
     this.tagsArray.removeAt(controlIndex);
   }
 
-  // save recipe content method
+  // save/update recipe content method
   saveRecipe() {
+    if (!this.slug) {
+      this.recipeService
+        .saveRecipe(this.formGroup.value)
+        .subscribe({
+          complete: () => this.router.navigateByUrl(`/recipes/${this.slugControl.value}`)
+        });
+        return
+    }
     this.recipeService
-      .saveRecipe(this.formGroup.value)
+      .updateRecipe(this.slug, this.formGroup.value)
       .subscribe({
         complete: () => this.router.navigateByUrl(`/recipes/${this.slugControl.value}`)
       });
+
   }
 
   // publish method
@@ -206,7 +215,7 @@ export class EditComponent {
       }
       }
     });
-    
+
   }
 
 

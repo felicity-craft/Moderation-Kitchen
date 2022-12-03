@@ -12,10 +12,14 @@ export class RecipeCommentSectionComponent implements OnInit {
   @Input()
   public comments?: RecipeComment[];
 
+  @Input()
+  public title: string;
+
   @Output()
   public commentSubmittedEvent = new EventEmitter<RecipeComment>();
 
   submitComment() {
+    this.formGroup.patchValue({date: new Date()})
     this.commentSubmittedEvent.emit(this.formGroup.value);
     this.formGroup.reset();
     this.snackBar.open('Thanks for your comment!', 'Close');
@@ -33,6 +37,7 @@ export class RecipeCommentSectionComponent implements OnInit {
       name: [null, [Validators.required]],
       comment: [null],
       rating: [null],
+      date: [],
     })
   }
 

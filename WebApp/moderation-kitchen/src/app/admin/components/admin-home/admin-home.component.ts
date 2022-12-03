@@ -19,7 +19,7 @@ export class AdminHomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  this.recipes = this.recipeService.getAllRecipes();
+  this.recipes = this.recipeService.getAllRecipes().pipe(tap(recipes => console.log(recipes)));
   }
 
 }

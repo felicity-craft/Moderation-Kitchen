@@ -41,15 +41,19 @@ export class RecipeComponent implements OnInit {
       next: (result) => {
         console.log('result:', result);
         if (result === 'delete') {
-          this.recipeService.deleteRecipe(this.slug);
-          this.router.navigateByUrl('/admin');
+          this.recipeService.deleteRecipe(this.slug).subscribe({
+            next: _ => this.router.navigateByUrl('/admin')
+          });
         }
       },
     });
   }
 
   onSubmitComment(recipeComment: RecipeComment) {
-    this.recipeService.submitComment(this.slug, recipeComment);
+    // TO DO: refresh the page
+    this.recipeService.submitComment(this.slug, recipeComment).subscribe({
+      next: () => this.router.navigateByUrl(`/recipes/${this.slug}`)
+    });
   }
 
   scrollToElement(elementId: string): void {

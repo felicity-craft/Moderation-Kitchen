@@ -41,7 +41,7 @@ public class RecipesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAllRecipes([FromQuery] string filter, CancellationToken ct)
+    public async Task<IActionResult> GetAllRecipes([FromQuery] string? filter, CancellationToken ct)
     {
         if (this.fileSystem.Directory.Exists(this.dataDirectoryPath))
         {
@@ -79,29 +79,4 @@ public class RecipesController : ControllerBase
         return this.Ok(Array.Empty<Recipe>());
     }
 
-    [HttpPost]
-    public async Task<IActionResult> CreateRecipe([FromBody] Recipe recipe, CancellationToken ct)
-    {
-        string recipeFilePath = Path.Join(this.dataDirectoryPath, $"{recipe.Slug}.json");
-        if (this.fileSystem.File.Exists(recipeFilePath))
-        {
-            return this.Conflict();
-        }
-        using Stream stream = this.fileSystem.File.OpenWrite(recipeFilePath);
-        await JsonSerializer.SerializeAsync<Recipe>(stream, recipe, this.jsonOptions, ct);
-        return this.Created($"/api/recipes/{recipe.Slug}", recipe);
-    }
-
-    [HttpDelete("{slug}")]
-    public IActionResult DeleteRecipe([FromRoute] string slug)
-    {
-        string recipeFilePath = Path.Join(this.dataDirectoryPath, $"{slug}.json");
-        if (this.fileSystem.File.Exists(recipeFilePath))
-        {
-            this.fileSystem.File.Delete(recipeFilePath);
-            return this.NoContent();
-        }
-        this.logger.LogWarning("Cannot delete recipe. No recipe found with slug {slug}", slug);
-        return this.NotFound();
-    }
 }
