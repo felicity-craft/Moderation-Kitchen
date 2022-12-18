@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { from, Observable, of, tap } from 'rxjs';
-import { ConfirmActionDialogComponent } from 'src/app/recipes/components/confirm-action-dialog/confirm-action-dialog.component';
+import { Observable, of } from 'rxjs';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { Recipe } from '../interfaces/recipe';
 import { RecipeComment } from '../interfaces/recipe-comment';
@@ -77,7 +76,7 @@ export class RecipeService {
 
   updateRecipe(slug: string, recipe: Recipe): Observable<void> {
     return this.httpClient.put<void>(
-      `${this.baseUrl}/api/admin/recipes`,
+      `${this.baseUrl}/api/admin/recipes/${slug}`,
       recipe
     );
   }
