@@ -3,8 +3,9 @@
     <app-button (click)="publishRecipe()">Publish</app-button>
     <app-button-stroked (click)="openDialog()">Schedule</app-button-stroked>
     <app-button-stroked (click)="saveDraft()">Save draft</app-button-stroked>
+    <app-button-stroked (click)="openDialogDelete()">Delete</app-button-stroked>
   </div>
-  <form [formGroup]="formGroup">
+  <form [formGroup]="formGroup" class="full-width">
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Title</mat-label>
       <input

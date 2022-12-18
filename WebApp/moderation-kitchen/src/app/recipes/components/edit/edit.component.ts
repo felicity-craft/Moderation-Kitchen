@@ -6,6 +6,7 @@ import { ConfirmScheduleDialogComponent } from '../../../admin/components/confir
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeService } from 'src/app/core/services/recipe.service';
+import { ConfirmActionDialogComponent } from '../confirm-action-dialog/confirm-action-dialog.component';
 
 export interface Tag {
   name: string;
@@ -44,6 +45,9 @@ export class EditComponent {
   }
   public get tagsArray(): FormArray {
     return this.formGroup.get('tags') as FormArray;
+  }
+  public get commentsArray(): FormArray {
+    return this.formGroup.get('comments') as FormArray;
   }
   public get dateControl(): FormControl {
     return this.formGroup.get('date') as FormControl;
@@ -84,6 +88,7 @@ export class EditComponent {
       ingredients: fb.array([]),
       method: fb.array([]),
       tags: fb.array([]),
+      comments: fb.array([]),
     });
     // whenever the title changes, update the slug by converting the tile to lower kebab case.
     this.titleControl.valueChanges.subscribe((value: string) => {
@@ -114,12 +119,20 @@ export class EditComponent {
           // go to recipe, ask for the ingredients, it gives us each ingredient one by one and we map the ingredient into a form control.
           // Finally, we store all of these controls in the const ingredientControls.
           const ingredientControls =  recipe.ingredients.map(ingredient => this.fb.control(ingredient));
-          // tell ingredientsArray to use new shiny controls (ingredientControls) instead of whatever controls it had before.
-          this.ingredientsArray.controls = ingredientControls;
+          // adding each control to the list of ingredient control
+          ingredientControls.forEach(control => this.ingredientsArray.push(control));
           const methodControls =  recipe.method.map(method => this.fb.control(method));
-          this.methodArray.controls = methodControls;
+          methodControls.forEach(control => this.methodArray.push(control));
           const tagControls =  recipe.tags.map(tag => this.fb.control(tag));
-          this.tagsArray.controls = tagControls;
+          tagControls.forEach(control => this.tagsArray.push(control));
+          const commentControls = recipe.comments.map(comment => this.fb.group({
+            rating: this.fb.control(comment.rating),
+            comment: this.fb.control(comment.comment),
+            name: this.fb.control(comment.name),
+            email: this.fb.control(comment.email),
+            date: this.fb.control(comment.date),
+          }));
+          commentControls.forEach(control => this.commentsArray.push(control));
         }
       })
    }
@@ -175,6 +188,10 @@ export class EditComponent {
 
   // save/update recipe content method
   saveRecipe() {
+    var recipe = this.formGroup.value;
+    recipe.tags = this.tagsArray.value;
+    recipe.ingredients = this.ingredientsArray.value;
+    recipe.method = this.methodArray.value;
     if (!this.slug) {
       this.recipeService
         .saveRecipe(this.formGroup.value)
@@ -194,6 +211,7 @@ export class EditComponent {
   // publish method
   publishRecipe() {
     this.isDraftControl.setValue(false);
+    this.dateControl.setValue(new Date())
     this.saveRecipe();
   }
 
@@ -216,6 +234,21 @@ export class EditComponent {
       }
     });
 
+  }
+
+  // delete method
+  openDialogDelete() {
+    const a = this.dialog.open(ConfirmActionDialogComponent);
+    a.afterClosed().subscribe({
+      next: (result) => {
+        console.log('result:', result);
+        if (result === 'delete') {
+          this.recipeService.deleteRecipe(this.slug).subscribe({
+            next: _ => this.router.navigateByUrl('/admin')
+          });
+        }
+      },
+    });
   }
 
 
