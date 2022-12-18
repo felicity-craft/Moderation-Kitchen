@@ -9,7 +9,7 @@ namespace ModerationKitchen.Web.Api.Controllers;
 [Route("api/recipes")]
 public class RecipesController : ControllerBase
 {
-    private readonly string dataDirectoryPath = "/Users/fliss/Desktop/VS Projects/ModerationKitchen/WebApi/Web.Api/Data";
+    private readonly string dataDirectoryPath = "/Users/fliss/Desktop/VS Projects/ModerationKitchen/WebApi/Web.Api/Data/Recipes";
     private readonly IFileSystem fileSystem;
     private readonly JsonSerializerOptions jsonOptions;
     private readonly ILogger<RecipesController> logger;
@@ -65,7 +65,10 @@ public class RecipesController : ControllerBase
             recipes.Add(recipe!);
         }
 
-        return recipes.OrderByDescending(recipe => recipe.Date).ToList();
+        return recipes.OrderByDescending(recipe => recipe.Date)
+                      .Where(recipe => recipe.Date <= DateTime.Now)
+                      .Where(recipe => !recipe.IsDraft)
+                      .ToList();
     }
 
     [HttpGet("featured")]

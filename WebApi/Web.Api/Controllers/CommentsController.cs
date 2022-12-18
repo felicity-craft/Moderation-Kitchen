@@ -8,7 +8,7 @@ namespace ModerationKitchen.Web.Api.Controllers;
 [ApiController]
 public class CommentsController : ControllerBase
 {
-    private readonly string dataDirectoryPath = "/Users/fliss/Desktop/VS Projects/ModerationKitchen/WebApi/Web.Api/Data";
+    private readonly string dataDirectoryPath = "/Users/fliss/Desktop/VS Projects/ModerationKitchen/WebApi/Web.Api/Data/Recipes";
     private readonly IFileSystem fileSystem;
     private readonly JsonSerializerOptions jsonOptions;
     private readonly ILogger<CommentsController> logger;
@@ -33,7 +33,7 @@ public class CommentsController : ControllerBase
                 recipe = await JsonSerializer.DeserializeAsync<Recipe>(stream, this.jsonOptions, ct);
                 recipe.Comments = recipe.Comments ?? new List<RecipeComment>();
                 var newComments = recipe.Comments.Append(recipeComment);
-                recipe.Comments = newComments.ToList();
+                recipe.Comments = newComments.OrderByDescending(c => c.Date).ToList();
             }
             using (Stream stream = this.fileSystem.File.Open(recipeFilePath, FileMode.Truncate))
             {
