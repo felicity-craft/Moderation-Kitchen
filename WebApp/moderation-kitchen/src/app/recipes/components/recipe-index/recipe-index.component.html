@@ -2,14 +2,14 @@
     <div class="recipe-search-container">
         <h2>Recipe index</h2>
     </div>
-    <app-search-container></app-search-container>
+    <app-search-container [tags]="tags | async"></app-search-container>
     <ng-container *ngIf="(featuredRecipes | async) as recipes">
         <div class="featured-container">
             <h4>Featured</h4>
             <div class="featured-image-container">
-                <app-card *ngFor="let recipe of recipes" 
-                        [src]="recipe.heroImage" 
-                        href="/recipes/{{recipe.slug}}" 
+                <app-card *ngFor="let recipe of recipes"
+                        [src]="recipe.heroImage"
+                        href="/recipes/{{recipe.slug}}"
                         [title]="recipe.title">
             </app-card>
             </div>
