@@ -8,6 +8,7 @@ import { RecipeComment } from '../../../core/interfaces/recipe-comment';
 import { RecipeService } from 'src/app/core/services/recipe.service';
 import { ViewportScroller } from '@angular/common';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-recipe',
@@ -20,7 +21,7 @@ export class RecipeComponent implements OnInit {
   public get showAdminButtons(): boolean{
     return this.authService.loggedIn();
   };
-
+  
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -28,6 +29,7 @@ export class RecipeComponent implements OnInit {
     private recipeService: RecipeService,
     private viewportScroller: ViewportScroller,
     private authService: AuthenticationService,
+    // private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
@@ -50,10 +52,13 @@ export class RecipeComponent implements OnInit {
   }
 
   onSubmitComment(recipeComment: RecipeComment) {
-    // TO DO: refresh the page
     this.recipeService.submitComment(this.slug, recipeComment).subscribe({
-      next: () => this.router.navigateByUrl(`/recipes/${this.slug}`)
+      next: () =>  {
+        window.location.reload();
+        // this.snackBar.open('Thanks for your comment!', 'Close');
+      }
     });
+   ;
   }
 
   scrollToElement(elementId: string): void {
