@@ -22,7 +22,6 @@ export class RecipeCommentSectionComponent implements OnInit {
     this.formGroup.patchValue({date: new Date()})
     this.commentSubmittedEvent.emit(this.formGroup.value);
     this.formGroup.reset();
-    this.snackBar.open('Thanks for your comment!', 'Close');
   }
 
   public formGroup: FormGroup;
