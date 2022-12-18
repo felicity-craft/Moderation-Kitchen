@@ -15,10 +15,6 @@
     align-items: center;
 }
 
-p.search{
-    text-transform: uppercase;
-}
-
 :host{
     width: 100%;
 }
@@ -30,4 +26,9 @@ p.search{
 ::ng-deep.mat-form-field-outline{
     background-color: white !important;
     border-radius: 5px;
+}
+
+mat-option a {
+  color: black;
+  font-size: 15px;
 }
