@@ -27,7 +27,7 @@ env:
 on:
   push:
     branches: [ "master" ]
-    paths: './WebApi/**' # Only run when files in the 'WebApi' folder (or any subfolders are changed)
+    # paths: './WebApi/**' # Only run when files in the 'WebApi' folder (or any subfolders are changed)
   workflow_dispatch:
 
 permissions:
