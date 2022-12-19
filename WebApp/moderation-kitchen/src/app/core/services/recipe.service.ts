@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, of } from 'rxjs';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { environment } from 'src/environments/environment';
 import { Recipe } from '../interfaces/recipe';
 import { RecipeComment } from '../interfaces/recipe-comment';
 
@@ -10,7 +11,7 @@ import { RecipeComment } from '../interfaces/recipe-comment';
   providedIn: 'root',
 })
 export class RecipeService {
-  private baseUrl: string = 'https://localhost:7264';
+  private baseUrl: string = environment.apiBaseUrl;
 
   private dialog: MatDialog;
   constructor(
