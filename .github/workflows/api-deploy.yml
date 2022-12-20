@@ -21,7 +21,7 @@ name: Build and deploy ASP.Net Core app to an Azure Web App
 
 env:
   AZURE_WEBAPP_NAME: moderation-kitchen-api
-  AZURE_WEBAPP_PACKAGE_PATH: './ModerationKitchen.Web.Api'
+  AZURE_WEBAPP_PACKAGE_PATH: '.'
   DOTNET_VERSION: '6'
 
 on:
