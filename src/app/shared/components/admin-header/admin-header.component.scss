@@ -1,0 +1,147 @@
+@use "sass:math";
+@import "../../../../breakpoints.scss";
+
+.header-container {
+  width: 100%;
+  padding: 16px 0px;
+  background: linear-gradient(
+    90deg,
+    rgba(250, 231, 225, 1) 0%,
+    rgba(222, 194, 186, 1) 100%
+  );
+}
+
+.header-content-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0px auto;
+
+  @include media("<s") {
+    width: 100%;
+    padding: 12px;
+  }
+  @include media(">=s") {
+    width: 540px;
+  }
+  @include media(">=m") {
+    width: 720px;
+  }
+  @include media(">=l") {
+    width: 960px;
+  }
+  @include media(">=xl") {
+    width: 1140px;
+  }
+  @include media(">xxl") {
+    width: 1320px;
+  }
+}
+
+.logout-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  width: 250px;
+  border-radius: 5px;
+}
+
+::ng-deep.mat-form-field-wrapper {
+  padding-bottom: 0px;
+}
+
+::ng-deep.mat-form-field-outline {
+  background-color: white !important;
+  border-radius: 5px;
+}
+
+.menu-container {
+  border-style: solid;
+  border-width: 1px 0px;
+  border-color: white;
+  margin-top: 120px;
+  margin-bottom: 150px;
+}
+
+.menu-content-container {
+  margin: 0px auto;
+
+  @include media("<s") {
+    width: 100%;
+    padding: 12px;
+  }
+  @include media(">=s") {
+    width: 540px;
+  }
+  @include media(">=m") {
+    width: 720px;
+  }
+  @include media(">=l") {
+    width: 960px;
+  }
+  @include media(">=xl") {
+    width: 1140px;
+  }
+  @include media(">xxl") {
+    width: 1320px;
+  }
+}
+
+.logo {
+  position: absolute;
+  width: 180px;
+  margin-top: 60px;
+
+  @include media("<s") {
+    padding: 12px;
+  }
+  @include media(">=s") {
+    margin-left: calc((100% - 540px) / 2);
+  }
+  @include media(">=m") {
+    margin-top: 20px;
+    width: 260px;
+    margin-left: calc((100% - 720px) / 2);
+  }
+  @include media(">=l") {
+    margin-left: calc((100% - 960px) / 2);
+  }
+  @include media(">=xl") {
+    margin-left: calc((100% - 1140px) / 2);
+  }
+  @include media(">xxl") {
+    margin-left: calc((100% - 1320px) / 2);
+  }
+}
+
+.menu-button-container {
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.menu-button {
+  text-transform: uppercase;
+}
+
+a {
+  color: rgb(255, 255, 255, 0.87);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #a36a72;
+  text-decoration: none;
+}
+
+mat-option a {
+  color: black;
+  font-size: 15px;
+}

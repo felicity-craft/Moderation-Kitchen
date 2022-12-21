@@ -1,0 +1,18 @@
+.recipe-section-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding-top: 12px;
+}
+
+.recipe-ingredient-container {
+    display: flex;
+    text-align: left;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+:host{
+    width: 100%;
+}

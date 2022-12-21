@@ -1,7 +1,0 @@
-<div class="rating-input-container" (mouseleave)="clearHover()">
-    <!-- For each star in stars array (as in the ts file), create the star icon -->
-    <div *ngFor="let star of stars" (mouseenter)="hoverStar(star)" (click)="selectStar(star)">
-        <fa-icon [icon]="getIcon(star)" size="xl"></fa-icon>
-    </div>
-    <input type="number" [formControlName]="formControlName" style="display: none;">
-</div>

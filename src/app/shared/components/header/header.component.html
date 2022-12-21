@@ -1,0 +1,41 @@
+<div class="header-container">
+  <div class="header-content-container">
+    <div class="socials-container">
+      <img class="socials-icon" src="/assets/images/facebook.png" />
+      <img class="socials-icon" src="/assets/images/instagram.png" />
+      <img class="socials-icon" src="/assets/images/pinterest.png" />
+    </div>
+    <div class="search-container">
+      <mat-form-field appearance="outline">
+        <input
+          type="text"
+          placeholder="Search"
+          matInput
+          [formControl]="recipeSearchControl"
+          [matAutocomplete]="auto"
+        />
+        <mat-icon matSuffix>search</mat-icon>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let recipe of filteredRecipes | async"
+            [value]="recipe.title"
+          >
+            <a href="/recipes/{{recipe.slug}}">
+                {{ recipe.title }}
+            </a>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<img class="logo" src="/assets/images/logo.png" />
+<div class="menu-container">
+  <div class="menu-content-container">
+    <div class="menu-button-container">
+      <a href="/" class="menu-button">Home</a>
+      <a href="/recipes" class="menu-button">Recipe Index</a>
+    </div>
+  </div>
+</div>

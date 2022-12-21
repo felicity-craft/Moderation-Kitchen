@@ -1,0 +1,34 @@
+<div class="search-container">
+    <div class="category-container">
+        <p class="search">BY CATEGORY</p>
+        <mat-form-field appearance="outline">
+          <mat-select placeholder="Select category" (selectionChange)="onTagSelected()">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let tag of tags" [value]="tag">{{tag}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="category-container">
+        <p class="search">SEARCH</p>
+            <mat-form-field appearance="outline" >
+              <input
+                type="text"
+                placeholder="Search the blog"
+                matInput
+                [formControl]="recipeSearchControl"
+                [matAutocomplete]="auto"
+              />
+              <mat-icon matSuffix>search</mat-icon>
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option
+                  *ngFor="let recipe of filteredRecipes | async"
+                  [value]="recipe.title"
+                >
+                  <a href="/recipes/{{recipe.slug}}">
+                      {{ recipe.title }}
+                  </a>
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+    </div>
+</div>

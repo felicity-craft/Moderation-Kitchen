@@ -1,0 +1,14 @@
+<app-page-container>
+  <h2>All recipes</h2>
+  <ng-container *ngIf="allRecipes | async as recipes">
+    <div class="recipe-image-container">
+      <app-card
+        *ngFor="let recipe of recipes"
+        [src]="recipe.heroImage"
+        href="/recipes/{{ recipe.slug }}"
+        [title]="recipe.title"
+      >
+      </app-card>
+    </div>
+  </ng-container>
+</app-page-container>
