@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  // TODO add API base URL property
+  apiBaseUrl: 'https://moderation-kitchen-api.azurewebsites.net',
 };
