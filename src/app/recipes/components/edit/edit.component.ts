@@ -186,6 +186,9 @@ export class EditComponent {
 
   // save/update recipe content method
   saveRecipe() {
+    if (!this.dateControl.value) {
+      this.dateControl.setValue(new Date())
+    }
     var recipe = this.formGroup.value;
     recipe.tags = this.tagsArray.value;
     recipe.ingredients = this.ingredientsArray.value;
@@ -209,7 +212,6 @@ export class EditComponent {
   // publish method
   publishRecipe() {
     this.isDraftControl.setValue(false);
-    this.dateControl.setValue(new Date())
     this.saveRecipe();
   }
 
