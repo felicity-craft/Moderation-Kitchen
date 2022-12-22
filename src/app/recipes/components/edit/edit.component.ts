@@ -7,6 +7,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeService } from 'src/app/core/services/recipe.service';
 import { ConfirmActionDialogComponent } from '../confirm-action-dialog/confirm-action-dialog.component';
+import { ImageService } from 'src/app/core/services/image.service';
 
 export interface Tag {
   name: string;
@@ -63,7 +64,6 @@ export class EditComponent {
   public tagFormGroup: FormGroup;
   // Image preview
   public preview: string = '/assets/images/default.png';
-  private reader: FileReader = new FileReader();
   private slug: string;
 
   constructor(
@@ -72,6 +72,7 @@ export class EditComponent {
     private recipeService: RecipeService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private imageService: ImageService,
   ) {
     this.formGroup = fb.group({
       slug: fb.control(''),
@@ -144,12 +145,9 @@ export class EditComponent {
     if (selectedFiles) {
       const file: File | null = selectedFiles.item(0);
       if (file) {
-        this.preview = '';
-        this.reader.onload = (e: any) => {
-          this.preview = e.target.result;
-          this.heroImageControl.setValue(this.preview);
-        };
-        this.reader.readAsDataURL(file);
+        this.imageService.uploadImage(file).subscribe({next: link => {
+          this.preview = link;
+          this.heroImageControl.setValue(link)}});
       }
     }
   }
