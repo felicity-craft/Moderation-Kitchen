@@ -24,7 +24,7 @@
                   *ngFor="let recipe of filteredRecipes | async"
                   [value]="recipe.title"
                 >
-                  <a href="/recipes/{{recipe.slug}}">
+                  <a routerLink="/recipes/{{recipe.slug}}">
                       {{ recipe.title }}
                   </a>
                 </mat-option>

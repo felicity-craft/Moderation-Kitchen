@@ -44,6 +44,7 @@ import { PageContainerComponent } from './components/page-container/page-contain
 import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
 import { ConfirmLogoutDialogComponent } from './components/confirm-logout-dialog/confirm-logout-dialog.component';
 import { LinkButtonComponent } from './components/link-button/link-button.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { LinkButtonComponent } from './components/link-button/link-button.compon
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
 
     MatButtonModule,
     MatSelectModule,

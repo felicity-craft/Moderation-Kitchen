@@ -2,7 +2,7 @@
     <div class="home-container">
         <ng-container *ngIf="(featuredRecipes | async) as recipes">
             <div class="feature-image-container" *ngFor="let recipe of recipes">
-                <a href="/recipes/{{recipe.slug}}">
+                <a routerLink="/recipes/{{recipe.slug}}">
                     <img [src]="recipe.heroImage"  class="feature-image"/>
                     <div class="caption">{{recipe.title}}</div>
                 </a>

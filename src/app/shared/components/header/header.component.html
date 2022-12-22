@@ -20,7 +20,7 @@
             *ngFor="let recipe of filteredRecipes | async"
             [value]="recipe.title"
           >
-            <a href="/recipes/{{recipe.slug}}">
+            <a routerLink="/recipes/{{recipe.slug}}">
                 {{ recipe.title }}
             </a>
           </mat-option>
@@ -34,8 +34,8 @@
 <div class="menu-container">
   <div class="menu-content-container">
     <div class="menu-button-container">
-      <a href="/" class="menu-button">Home</a>
-      <a href="/recipes" class="menu-button">Recipe Index</a>
+      <a routerLink="/" class="menu-button">Home</a>
+      <a routerLink="/recipes" class="menu-button">Recipe Index</a>
     </div>
   </div>
 </div>
