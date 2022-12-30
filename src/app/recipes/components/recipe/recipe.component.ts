@@ -8,7 +8,6 @@ import { RecipeComment } from '../../../core/interfaces/recipe-comment';
 import { RecipeService } from 'src/app/core/services/recipe.service';
 import { ViewportScroller } from '@angular/common';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-recipe',
@@ -29,7 +28,6 @@ export class RecipeComponent implements OnInit {
     private recipeService: RecipeService,
     private viewportScroller: ViewportScroller,
     private authService: AuthenticationService,
-    // private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
@@ -55,7 +53,6 @@ export class RecipeComponent implements OnInit {
     this.recipeService.submitComment(this.slug, recipeComment).subscribe({
       next: () =>  {
         window.location.reload();
-        // this.snackBar.open('Thanks for your comment!', 'Close');
       }
     });
    ;

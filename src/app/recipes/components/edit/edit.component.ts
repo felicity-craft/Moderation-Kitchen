@@ -74,6 +74,7 @@ export class EditComponent {
     private activatedRoute: ActivatedRoute,
     private imageService: ImageService,
   ) {
+    //asking form builder to build a group. We pass in an object which contains the form control arrays and or groups (i.e. which is the shape of the things we want to edit on a recipe)
     this.formGroup = fb.group({
       slug: fb.control(''),
       isDraft: fb.control(false),
@@ -143,7 +144,7 @@ export class EditComponent {
   selectImage(event: any) {
     const selectedFiles = event.target.files;
     if (selectedFiles) {
-      const file: File | null = selectedFiles.item(0);
+      const file: File = selectedFiles.item(0);
       if (file) {
         this.imageService.uploadImage(file).subscribe({next: link => {
           this.preview = link;
