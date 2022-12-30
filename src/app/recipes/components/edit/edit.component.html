@@ -74,23 +74,23 @@
     <div class="step-container">
       <!-- this represents the ingredients that have been added to the recipe -->
       <div
-        *ngFor="let control of ingredientControls; let i = index"
+        *ngFor="let ingredientControl of ingredientControls; let i = index"
         class="row-container"
       >
         <mat-form-field appearance="outline" style="flex-grow: 3">
           <mat-label>Ingredient</mat-label>
-          <input matInput type="text" [formControl]="control" />
+          <input matInput type="text" [formControl]="ingredientControl" />
         </mat-form-field>
         <button mat-icon-button (click)="removeIngredient(i)">
           <mat-icon>cancel</mat-icon>
         </button>
       </div>
       <!-- this represents a new ingredient to be added -->
-      <form [formGroup]="ingredientFormGroup" (ngSubmit)="addIngredient()">
+      <form [formGroup]="ingredientToAddFormGroup" (ngSubmit)="addIngredient()">
         <div class="row-container">
           <mat-form-field appearance="outline" style="flex-grow: 3">
             <mat-label>Ingredient</mat-label>
-            <input matInput type="text" formControlName="ingredient" />
+            <input matInput type="text" formControlName="ingredientToAdd" />
           </mat-form-field>
           <button mat-icon-button type="submit">
             <mat-icon>add</mat-icon>

@@ -57,7 +57,7 @@ export class EditComponent {
     return this.formGroup.get('isDraft') as FormControl;
   }
   // this is the ingredient form which represents new ingredients to be added to the recipe.
-  public ingredientFormGroup: FormGroup;
+  public ingredientToAddFormGroup: FormGroup;
   // this is the method form which represents new method steps to be added to the recipe.
   public methodFormGroup: FormGroup;
   // this is the tag form which represents new tags to be added to the recipe.
@@ -98,8 +98,8 @@ export class EditComponent {
       this.slugControl.setValue(valueAsKebabCase);
     });
     // this is initializing the ingredient form group, adding a control with an empty value to the form
-    this.ingredientFormGroup = fb.group({
-      ingredient: fb.control(''),
+    this.ingredientToAddFormGroup = fb.group({
+      ingredientToAdd: fb.control(''),
     });
     // this is initializing the method form group, adding a control with an empty value to the form
     this.methodFormGroup = fb.group({
@@ -155,9 +155,9 @@ export class EditComponent {
 
   // ingredients methods
   addIngredient(): void {
-    const ingredientValue = this.ingredientFormGroup.get('ingredient').value;
+    const ingredientValue = this.ingredientToAddFormGroup.get('ingredientToAdd').value;
     this.ingredientsArray.push(this.fb.control(ingredientValue));
-    this.ingredientFormGroup.reset();
+    this.ingredientToAddFormGroup.reset();
   }
   removeIngredient(controlIndex: number): void {
     this.ingredientsArray.removeAt(controlIndex);
