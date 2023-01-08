@@ -1,6 +1,7 @@
 <app-page-container>
   <ng-container *ngIf="(blogPosts|async) as blogPost; else notFound">
     <div class="admin-button-container" *ngIf="showAdminButtons">
+      <app-welcome-message></app-welcome-message>
       <app-link-button href="/recipes/{{blogPost.slug}}/edit">Edit post</app-link-button>
       <app-button-stroked (click)="openDialog()">Delete</app-button-stroked>
     </div>

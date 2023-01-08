@@ -45,6 +45,7 @@ import { AdminHeaderComponent } from './components/admin-header/admin-header.com
 import { ConfirmLogoutDialogComponent } from './components/confirm-logout-dialog/confirm-logout-dialog.component';
 import { LinkButtonComponent } from './components/link-button/link-button.component';
 import { RouterModule } from '@angular/router';
+import { WelcomeMessageComponent } from './components/welcome-message/welcome-message.component';
 
 
 @NgModule({
@@ -94,6 +95,7 @@ import { RouterModule } from '@angular/router';
     AdminHeaderComponent,
     ConfirmLogoutDialogComponent,
     LinkButtonComponent,
+    WelcomeMessageComponent,
   ],
   exports: [
     CommonModule,
@@ -138,6 +140,7 @@ import { RouterModule } from '@angular/router';
     AdminHeaderComponent,
     ConfirmLogoutDialogComponent,
     LinkButtonComponent,
+    WelcomeMessageComponent,
 
   ],
   providers:[
