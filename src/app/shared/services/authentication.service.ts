@@ -5,14 +5,14 @@ import { Injectable } from '@angular/core';
 })
 export class AuthenticationService {
 
-  allowedEmail = 'Mike@example.com';
+  allowedEmail = 'mike@example.com';
   allowedPassword = '123';
 
   constructor() { }
   
   loginUser(email: string, password: string): boolean {
     if (
-      email == this.allowedEmail &&
+      email.toLowerCase() == this.allowedEmail &&
       password == this.allowedPassword
       ) {
         console.log('login success');
