@@ -95,6 +95,15 @@ li {
   }
 }
 
+.input-no-padding .mat-form-field-wrapper {
+  padding-bottom: 0px;
+}
+
+.input-search-background .mat-form-field-outline {
+  background-color: white !important;
+  border-radius: 5px;
+}
+
 $fontConfig: (
   display-4: mat.define-typography-level(112px, 112px, 300, 'Rubik', -0.0134em),
   display-3: mat.define-typography-level(56px, 56px, 400, 'Rubik', -0.0089em),

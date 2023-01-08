@@ -1,7 +1,7 @@
 <div class="search-container">
     <div class="category-container">
         <p class="search">BY CATEGORY</p>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="input-search-background">
           <mat-select placeholder="Select category" (selectionChange)="onTagSelected()">
             <mat-option>None</mat-option>
             <mat-option *ngFor="let tag of tags" [value]="tag">{{tag}}</mat-option>
@@ -10,7 +10,7 @@
     </div>
     <div class="category-container">
         <p class="search">SEARCH</p>
-            <mat-form-field appearance="outline" >
+            <mat-form-field appearance="outline" class="input-search-background">
               <input
                 type="text"
                 placeholder="Search the blog"
