@@ -27,7 +27,7 @@ export class ConfirmLogoutDialogComponent implements OnInit {
   logoutUser(){
     localStorage.removeItem('token');
     localStorage.removeItem('is_admin');
-    this.router.navigate(['/admin/login']);
+    window.location.href = '/admin/login';
     return true;
   }
 }

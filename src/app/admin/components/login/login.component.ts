@@ -43,7 +43,7 @@ export class LoginComponent {
       this.passwordControl.value
     );
     if (isLoggedIn) {
-      this.router.navigate(['/admin']);
+      window.location.href = '/admin';
     } else {
       this.showLoginError = true;
     }
