@@ -3,7 +3,7 @@
         <h2>Recipe index</h2>
     </div>
     <app-search-container [tags]="tags | async"></app-search-container>
-    <ng-container *ngIf="(featuredRecipes | async) as recipes">
+    <ng-container *ngIf="(featuredRecipes | async) as recipes; else loading">
         <div class="featured-container">
             <h4>Featured</h4>
             <div class="featured-image-container">
@@ -17,3 +17,7 @@
     </ng-container>
     <app-link-button href="/recipes/all-recipes" trailingIcon="double_arrow">See all recipes</app-link-button>
 </app-page-container>
+
+<ng-template #loading>
+    <app-loading-spinner></app-loading-spinner>
+</ng-template>

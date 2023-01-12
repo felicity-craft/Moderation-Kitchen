@@ -1,6 +1,6 @@
 <app-page-container>
   <h2>All recipes</h2>
-  <ng-container *ngIf="allRecipes | async as recipes">
+  <ng-container *ngIf="allRecipes | async as recipes; else loading">
     <div class="recipe-image-container">
       <app-card
         *ngFor="let recipe of recipes"
@@ -12,3 +12,7 @@
     </div>
   </ng-container>
 </app-page-container>
+
+<ng-template #loading>
+    <app-loading-spinner></app-loading-spinner>
+</ng-template>

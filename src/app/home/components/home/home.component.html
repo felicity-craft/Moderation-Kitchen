@@ -1,6 +1,6 @@
 <app-page-container>
     <div class="home-container">
-        <ng-container *ngIf="(featuredRecipes | async) as recipes">
+        <ng-container *ngIf="(featuredRecipes | async) as recipes; else loading">
             <div class="feature-image-container" *ngFor="let recipe of recipes">
                 <a routerLink="/recipes/{{recipe.slug}}">
                     <img [src]="recipe.heroImage"  class="feature-image"/>
@@ -10,3 +10,7 @@
         </ng-container>
     </div>  
 </app-page-container>
+
+<ng-template #loading>
+    <app-loading-spinner></app-loading-spinner>
+</ng-template>

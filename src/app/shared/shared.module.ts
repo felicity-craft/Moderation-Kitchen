@@ -46,6 +46,7 @@ import { ConfirmLogoutDialogComponent } from './components/confirm-logout-dialog
 import { LinkButtonComponent } from './components/link-button/link-button.component';
 import { RouterModule } from '@angular/router';
 import { WelcomeMessageComponent } from './components/welcome-message/welcome-message.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { WelcomeMessageComponent } from './components/welcome-message/welcome-me
     MatDialogModule,
     MatToolbarModule,
     MatAutocompleteModule,
+    MatProgressSpinnerModule,
 
     FontAwesomeModule,
     BreadcrumbModule,
@@ -96,6 +98,7 @@ import { WelcomeMessageComponent } from './components/welcome-message/welcome-me
     ConfirmLogoutDialogComponent,
     LinkButtonComponent,
     WelcomeMessageComponent,
+    LoadingSpinnerComponent,
   ],
   exports: [
     CommonModule,
@@ -126,6 +129,7 @@ import { WelcomeMessageComponent } from './components/welcome-message/welcome-me
     MatDialogModule,
     MatToolbarModule,
     MatAutocompleteModule,
+    MatProgressSpinnerModule,
 
     HeaderComponent,
     FooterComponent,
@@ -141,6 +145,7 @@ import { WelcomeMessageComponent } from './components/welcome-message/welcome-me
     ConfirmLogoutDialogComponent,
     LinkButtonComponent,
     WelcomeMessageComponent,
+    LoadingSpinnerComponent,
 
   ],
   providers:[
