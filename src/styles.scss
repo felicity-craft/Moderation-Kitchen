@@ -13,6 +13,16 @@
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons+Outlined';
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
 
+//Tailwind
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+//Overriding Tailwind border on mat-input fields
+.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field .mdc-notched-outline__notch {
+  border-right-style: hidden;
+}
+
 html, body{
   background-color: #DEC2BA;
   margin: 0px;
