@@ -1,6 +1,6 @@
 <div class="header-container">
-    <div class="header-content-container">
-        <div class="logout-container">
+    <div class="header-content-container flex flex-col md:flex-row py-7 m-2 md:m-16">
+        <div class="logout-container ml-3.5">
             <app-button (click)="openDialog()" *ngIf="showLogout">Log out</app-button>
         </div>
         <div class="search-container input-search-background input-no-padding">
@@ -28,6 +28,11 @@
     </div>
 </div>
 
+<button
+class="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block md:hidden outline-none focus:outline-none"
+type="button" (click)="toggleNavbar()">
+<mat-icon>menu</mat-icon>
+</button>
 
 <img class="logo" src="/assets/images/logo.png" />
 <div class="menu-container">
