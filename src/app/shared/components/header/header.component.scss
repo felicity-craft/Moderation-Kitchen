@@ -3,7 +3,6 @@
 
 .header-container {
   width: 100%;
-  padding: 16px 0px;
   background: linear-gradient(
     90deg,
     rgba(250, 231, 225, 1) 0%,
@@ -12,8 +11,6 @@
 }
 
 .header-content-container {
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
   margin: 0px auto;
 
@@ -90,17 +87,18 @@
 
 .logo {
   position: absolute;
-  width: 180px;
-  margin-top: 60px;
+  width: 200px;
+  margin-top: 65px;
 
   @include media("<s") {
     padding: 12px;
   }
   @include media(">=s") {
     margin-left: calc((100% - 540px) / 2);
+    margin-top: -65px;
   }
   @include media(">=m") {
-    margin-top: 20px;
+    margin-top: -100px;
     width: 260px;
     margin-left: calc((100% - 720px) / 2);
   }
@@ -115,16 +113,17 @@
   }
 }
 
+.logo-mobile {
+  max-width: 200px;
+  max-height: 200px;
+}
+
 .menu-button-container {
   height: 58px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 16px;
-}
-
-.menu-button {
-  text-transform: uppercase;
 }
 
 a {

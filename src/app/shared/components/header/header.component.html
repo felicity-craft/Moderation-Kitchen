@@ -1,6 +1,6 @@
 <div class="header-container">
-  <div class="header-content-container">
-    <div class="socials-container">
+  <div class="header-content-container flex flex-col sm:flex-row py-5 gap-4">
+    <div class="socials-container ml-3.5">
       <img class="socials-icon" src="/assets/images/facebook.png" />
       <img class="socials-icon" src="/assets/images/instagram.png" />
       <img class="socials-icon" src="/assets/images/pinterest.png" />
@@ -30,12 +30,42 @@
   </div>
 </div>
 
-<img class="logo" src="/assets/images/logo.png" />
-<div class="menu-container">
-  <div class="menu-content-container">
-    <div class="menu-button-container">
-      <a routerLink="/" class="menu-button">Home</a>
-      <a routerLink="/recipes" class="menu-button">Recipe Index</a>
+<!-- nav bar for screens larger than small -->
+<div class="hidden sm:block">
+  <img class="logo" src="/assets/images/logo.png" />
+  <div class="menu-container">
+    <div class="menu-content-container">
+      <div class="menu-button-container">
+        <a routerLink="/">HOME</a>
+        <a routerLink="/recipes">RECIPE INDEX</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- nav bar for mobile -->
+<div class="flex flex-col items-start sm:hidden mx-5 my-4 gap-6">
+  <img class="logo-mobile" src="/assets/images/logo.png" />
+  <div>
+    <button
+      class="text-white cursor-pointer text-xl leading-none  mx-5 py-1 border border-solid border-transparent rounded bg-transparent block md:hidden outline-none focus:outline-none"
+      type="button"
+      (click)="toggleNavbar()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div
+      [ngClass]="{ hidden: !showMenu, flex: showMenu }"
+      class="md:flex md:flex-grow">
+        <ul
+        class="flex flex-col list-none ml-auto"
+        style="text-align: left">
+        <li class="nav-item mx-3">
+          <a routerLink="/" class="px-3">HOME</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a routerLink="/recipes" class="px-3">RECIPE INDEX</a>
+        </li>
+        </ul>
     </div>
   </div>
 </div>

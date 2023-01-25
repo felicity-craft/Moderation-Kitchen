@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
 
 recipeSearchControl= new FormControl('');
 filteredRecipes: Observable<{title: string, slug: string}[]>;
+showMenu = false;
 
   constructor(
     private recipeService: RecipeService,
@@ -28,6 +29,10 @@ filteredRecipes: Observable<{title: string, slug: string}[]>;
     this.filteredRecipes = this.recipeSearchControl.valueChanges.pipe(
       mergeMap(value => this.recipeService.searchForRecipe(value))
     );
+  }
+
+  toggleNavbar(){
+    this.showMenu = !this.showMenu;
   }
 
 }

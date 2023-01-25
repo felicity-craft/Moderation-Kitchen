@@ -1,6 +1,6 @@
 <div class="header-container">
   <div
-    class="header-content-container flex flex-col md:flex-row  py-5 m-2 md:m-16"
+    class="header-content-container flex flex-col sm:flex-row py-5 gap-4"
   >
     <div class="logout-container ml-3.5">
       <app-button (click)="openDialog()" *ngIf="showLogout">Log out</app-button>
@@ -36,9 +36,9 @@
   <div class="menu-container">
     <div class="menu-content-container">
       <div class="menu-button-container">
-        <a routerLink="/admin" class="menu-button">Admin home</a>
-        <a routerLink="/" class="menu-button">Home</a>
-        <a routerLink="/recipes" class="menu-button">Recipe Index</a>
+        <a routerLink="/admin">ADMIN HOME</a>
+        <a routerLink="/">HOME</a>
+        <a routerLink="/recipes">RECIPE INDEX</a>
       </div>
     </div>
   </div>
@@ -61,13 +61,13 @@
         class="flex flex-col list-none ml-auto"
         style="text-align: left">
         <li class="nav-item mx-3">
-          <a routerLink="/admin" class="menu-button px-3">Admin home</a>
+          <a routerLink="/admin" class="px-3">ADMIN HOME</a>
         </li>
         <li class="nav-item mx-3">
-          <a routerLink="/" class="menu-button px-3">Home</a>
+          <a routerLink="/" class="px-3">HOME</a>
         </li>
         <li class="nav-item mx-3">
-          <a routerLink="/recipes" class="menu-button px-3">Recipe Index</a>
+          <a routerLink="/recipes" class="px-3">RECIPE INDEX</a>
         </li>
         </ul>
     </div>
