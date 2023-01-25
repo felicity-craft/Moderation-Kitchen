@@ -6,15 +6,32 @@
     gap: 8px;
 }
 
+.mobile-home-container {
+    justify-content: space-between;
+    gap: 8px;
+    align-items: center;
+}
+
 .feature-image-container {
     position: relative;
     width: 25%;
+}
+
+.mobile-feature-image-container {
+    position: relative;
+    width: 100%;
 }
 
 .feature-image {
     width: 100%;
     object-fit: cover;
     height: 480px;
+}
+
+.mobile-feature-image {
+    object-fit: cover;
+    height: 300px;
+    width: 300px;
 }
 
 .caption {

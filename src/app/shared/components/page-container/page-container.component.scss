@@ -2,6 +2,7 @@
 
 .container{
     margin: 0px auto;
+    align-items: center;
     
     @include media("<s") {
         width: 100%;
