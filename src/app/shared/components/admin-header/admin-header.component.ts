@@ -13,6 +13,8 @@ import { ConfirmLogoutDialogComponent } from '../confirm-logout-dialog/confirm-l
 })
 export class AdminHeaderComponent implements OnInit {
 
+  showMenu = false;
+
   public get showLogout(): boolean
   {
     return this.authService.loggedIn();
@@ -34,5 +36,9 @@ export class AdminHeaderComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(ConfirmLogoutDialogComponent);
+  }
+
+  toggleNavbar(){
+    this.showMenu = !this.showMenu;
   }
 }

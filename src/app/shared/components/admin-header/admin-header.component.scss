@@ -3,7 +3,6 @@
 
 .header-container {
   width: 100%;
-  padding: 16px 0px;
   background: linear-gradient(
     90deg,
     rgba(250, 231, 225, 1) 0%,
@@ -12,8 +11,6 @@
 }
 
 .header-content-container {
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
   margin: 0px auto;
 
@@ -86,7 +83,7 @@
 .logo {
   position: absolute;
   width: 180px;
-  margin-top: 60px;
+  margin-top: -50px;
 
   @include media("<s") {
     padding: 12px;
@@ -95,7 +92,7 @@
     margin-left: calc((100% - 540px) / 2);
   }
   @include media(">=m") {
-    margin-top: 20px;
+    margin-top: -100px;
     width: 260px;
     margin-left: calc((100% - 720px) / 2);
   }
@@ -135,4 +132,9 @@ a:hover {
 mat-option a {
   color: black;
   font-size: 15px;
+}
+
+.logo-mobile {
+  max-width: 200px;
+  max-height: 200px;
 }
