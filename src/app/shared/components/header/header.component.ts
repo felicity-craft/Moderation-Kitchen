@@ -33,7 +33,7 @@ showMenu = false;
       mergeMap(value => this.recipeService.searchForRecipe(value))
     );
 
-        //close nav menu on mobile on navigate
+    //close nav menu on mobile on navigate
     //used: https://medium.com/angular-shots/shot-4-how-to-listen-angular-router-events-7a102cca5a80
     this.router.events
       .pipe(
