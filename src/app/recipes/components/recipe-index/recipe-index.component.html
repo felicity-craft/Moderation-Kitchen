@@ -1,12 +1,12 @@
 <app-page-container>
-    <div class="recipe-search-container">
+    <div class="recipe-search-container flex flex-col">
         <h2>Recipe index</h2>
     </div>
     <app-search-container [tags]="tags | async"></app-search-container>
     <ng-container *ngIf="(featuredRecipes | async) as recipes; else loading">
-        <div class="featured-container">
-            <h4>Featured</h4>
-            <div class="featured-image-container">
+        <div class="featured-container flex flex-col">
+            <h4 class="text-center md:text-left">Featured</h4>
+            <div class="featured-image-container flex flex-col md:flex-row">
                 <app-card *ngFor="let recipe of recipes"
                         [src]="recipe.heroImage"
                         href="/recipes/{{recipe.slug}}"

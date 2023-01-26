@@ -1,5 +1,5 @@
-<div class="search-container">
-    <div class="category-container">
+<div class="search-container flex flex-col md:flex-row">
+    <div class="category-container flex flex-col items-center">
         <p class="search">BY CATEGORY</p>
         <mat-form-field appearance="outline" class="input-search-background">
           <mat-select placeholder="Select category" (selectionChange)="onTagSelected()">
@@ -8,7 +8,7 @@
           </mat-select>
         </mat-form-field>
     </div>
-    <div class="category-container">
+    <div class="category-container flex flex-col items-center">
         <p class="search">SEARCH</p>
             <mat-form-field appearance="outline" class="input-search-background">
               <input
