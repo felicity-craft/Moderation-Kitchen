@@ -1,6 +1,6 @@
 <app-page-container>
   <app-welcome-message></app-welcome-message>
-  <div class="button-container">
+  <div class="button-container flex flex-col items-start md:flex-row">
     <app-button (click)="publishRecipe()">Publish</app-button>
     <app-button-stroked (click)="openDialog()">Schedule</app-button-stroked>
     <app-button-stroked (click)="saveDraft()">Save draft</app-button-stroked>
@@ -54,7 +54,7 @@
         formControlName="body"
       ></textarea>
     </mat-form-field>
-    <div class="row-container">
+    <div class="row-container flex flex-col gap-1 md:flex-row md:gap-2">
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Prep time</mat-label>
         <input matInput type="text" formControlName="prepTime" />
@@ -68,7 +68,7 @@
         <input matInput type="text" formControlName="quantitySizeMade" />
       </mat-form-field>
     </div>
-    <div class="recipe-section-header">
+    <div class="recipe-section-header mt-4">
       <h4>Ingredients</h4>
       <hr />
     </div>
@@ -76,7 +76,7 @@
       <!-- this represents the ingredients that have been added to the recipe -->
       <div
         *ngFor="let ingredientControl of ingredientControls; let i = index"
-        class="row-container"
+        class="row-container flex flex-row"
       >
         <mat-form-field appearance="outline" style="flex-grow: 3">
           <mat-label>Ingredient</mat-label>
@@ -88,7 +88,7 @@
       </div>
       <!-- this represents a new ingredient to be added -->
       <form [formGroup]="ingredientToAddFormGroup" (ngSubmit)="addIngredient()">
-        <div class="row-container">
+        <div class="row-container flex flex-row">
           <mat-form-field appearance="outline" style="flex-grow: 3">
             <mat-label>Ingredient</mat-label>
             <input matInput type="text" formControlName="ingredientToAdd" />
@@ -99,7 +99,7 @@
         </div>
       </form>
     </div>
-    <div class="recipe-section-header">
+    <div class="recipe-section-header mt-4">
       <h4>Method</h4>
       <hr />
     </div>
@@ -107,7 +107,7 @@
       <!-- this represents the method steps that have been added to the recipe -->
       <div
         *ngFor="let control of methodControls; let i = index"
-        class="row-container"
+        class="row-container flex flex-row"
       >
       {{i+1}}
         <mat-form-field appearance="outline" style="flex-grow: 3">
@@ -120,7 +120,7 @@
       </div>
       <!-- this represents a new method step to be added -->
       <form [formGroup]="methodFormGroup" (ngSubmit)="addMethodStep()">
-        <div class="row-container">
+        <div class="row-container flex flex-row">
           <mat-form-field appearance="outline" style="flex-grow: 3">
             <mat-label>Step</mat-label>
             <input matInput type="text" formControlName="step" />
@@ -131,7 +131,7 @@
         </div>
       </form>
     </div>
-    <hr />
+    <hr class="my-4"/>
     <form [formGroup]="tagFormGroup">
       <mat-form-field class="tag-list" appearance="outline">
         <mat-label>Tags</mat-label>

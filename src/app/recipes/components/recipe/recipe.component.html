@@ -1,9 +1,11 @@
 <app-page-container>
   <ng-container *ngIf="(blogPosts|async) as blogPost; else notFound">
-    <div class="admin-button-container" *ngIf="showAdminButtons">
+    <div *ngIf="showAdminButtons" class="flex flex-col gap-7 w-full">
       <app-welcome-message></app-welcome-message>
-      <app-link-button href="/recipes/{{blogPost.slug}}/edit">Edit post</app-link-button>
-      <app-button-stroked (click)="openDialog()">Delete</app-button-stroked>
+      <div class="admin-button-container flex flex-col md:flex-row items-start">
+        <app-link-button href="/recipes/{{blogPost.slug}}/edit">Edit post</app-link-button>
+        <app-button-stroked (click)="openDialog()">Delete</app-button-stroked>
+      </div>
     </div>
     <h2 style="line-height: 1;">{{blogPost.title}}</h2>
     <p>By {{blogPost.author}} ⦁ Published {{ blogPost.date | date:"MMM dd yyyy" }}</p>
