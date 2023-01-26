@@ -5,7 +5,7 @@
       <app-link-button href="/recipes/{{blogPost.slug}}/edit">Edit post</app-link-button>
       <app-button-stroked (click)="openDialog()">Delete</app-button-stroked>
     </div>
-    <h2 style="line-height: 1.6;">{{blogPost.title}}</h2>
+    <h2 style="line-height: 1;">{{blogPost.title}}</h2>
     <p>By {{blogPost.author}} ⦁ Published {{ blogPost.date | date:"MMM dd yyyy" }}</p>
     <app-button icon="expand_more" (click)="scrollToElement('recipeCard')">Jump to recipe</app-button>
     <p>{{blogPost.intro}}</p>
@@ -13,7 +13,7 @@
     <p>{{blogPost.body}}</p>
     <hr id="recipeCard">
     <img [src]="blogPost.heroImage" class="recipe-card-image"/>
-    <h4>{{blogPost.title}}</h4>
+    <h4 style="line-height: 1;">{{blogPost.title}}</h4>
     <app-rating [rating]="blogPost.rating"></app-rating>
     <app-preparation [prepTime]="blogPost.prepTime" [cookTime]="blogPost.cookTime" [quantitySizeMade]="blogPost.quantitySizeMade"></app-preparation>
     <app-ingredients [ingredients]="blogPost.ingredients"></app-ingredients>

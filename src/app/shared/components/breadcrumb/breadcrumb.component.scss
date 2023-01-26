@@ -25,12 +25,6 @@ ul.breadcrumb li {
     justify-items: center;
 }
 
-// ul.breadcrumb li+li:before {
-//     padding: 8px;
-//     color: #84565E;
-//     content: ">";
-// }
-
 ul.breadcrumb li a {
     color: rgb(255, 255, 255, 0.87);
     text-decoration: none;
@@ -50,5 +44,6 @@ ul.breadcrumb li a:hover {
     display: inline-block;
     overflow: hidden;
     padding: 0px 8px;
+    color: #84565E;
 }
 
