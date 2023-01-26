@@ -47,6 +47,8 @@ export class BreadcrumbComponent implements OnInit {
           });
           isHome = false;
       }
+      //keep the last three breadcrumbs - (relevant when on mobile for admin and editing posts)
+      this.breadcrumbs = this.breadcrumbs.slice(-3);
   }
 }
 
