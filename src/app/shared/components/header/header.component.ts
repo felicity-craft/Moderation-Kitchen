@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { map, mergeMap, Observable, startWith } from 'rxjs';
+import { NavigationStart, Router, RouterEvent } from '@angular/router';
+import { filter, map, mergeMap, Observable, startWith, Subject, takeUntil } from 'rxjs';
 import { RecipeService } from 'src/app/core/services/recipe.service';
 
 @Component({
@@ -12,10 +13,12 @@ export class HeaderComponent implements OnInit {
 
 recipeSearchControl= new FormControl('');
 filteredRecipes: Observable<{title: string, slug: string}[]>;
+private destroyed$ = new Subject();
 showMenu = false;
 
   constructor(
     private recipeService: RecipeService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +32,17 @@ showMenu = false;
     this.filteredRecipes = this.recipeSearchControl.valueChanges.pipe(
       mergeMap(value => this.recipeService.searchForRecipe(value))
     );
+
+        //close nav menu on mobile on navigate
+    //used: https://medium.com/angular-shots/shot-4-how-to-listen-angular-router-events-7a102cca5a80
+    this.router.events
+      .pipe(
+        filter((event: RouterEvent) => event instanceof NavigationStart),
+        takeUntil(this.destroyed$),
+      )
+      .subscribe((event: NavigationStart) => {
+        this.showMenu = false
+      });
   }
 
   toggleNavbar(){

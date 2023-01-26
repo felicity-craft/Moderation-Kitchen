@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { mergeMap, Observable } from 'rxjs';
+import { NavigationStart, Router, RouterEvent } from '@angular/router';
+import { filter, mergeMap, Observable, Subject, takeUntil } from 'rxjs';
 import { RecipeService } from 'src/app/core/services/recipe.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { ConfirmLogoutDialogComponent } from '../confirm-logout-dialog/confirm-logout-dialog.component';
@@ -13,6 +14,7 @@ import { ConfirmLogoutDialogComponent } from '../confirm-logout-dialog/confirm-l
 })
 export class AdminHeaderComponent implements OnInit {
 
+  private destroyed$ = new Subject();
   showMenu = false;
 
   public get showLogout(): boolean
@@ -26,12 +28,24 @@ export class AdminHeaderComponent implements OnInit {
     public dialog: MatDialog,
     private authService: AuthenticationService,
     private recipeService: RecipeService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
     this.filteredRecipes = this.recipeSearchControl.valueChanges.pipe(
       mergeMap(value => this.recipeService.searchForRecipe(value))
     );
+
+    //close nav menu on mobile on navigate
+    //used: https://medium.com/angular-shots/shot-4-how-to-listen-angular-router-events-7a102cca5a80
+    this.router.events
+      .pipe(
+        filter((event: RouterEvent) => event instanceof NavigationStart),
+        takeUntil(this.destroyed$),
+      )
+      .subscribe((event: NavigationStart) => {
+        this.showMenu = false
+      });
   }
 
   openDialog() {
@@ -41,4 +55,5 @@ export class AdminHeaderComponent implements OnInit {
   toggleNavbar(){
     this.showMenu = !this.showMenu;
   }
+
 }
