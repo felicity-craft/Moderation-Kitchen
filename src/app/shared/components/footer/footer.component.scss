@@ -1,3 +1,5 @@
+@import "../../../../breakpoints.scss";
+
 nav {
     background: linear-gradient(90deg, rgba(250, 231, 225, 1) 0%, rgba(222, 194, 186, 1) 100%);
 }
@@ -6,9 +8,28 @@ nav {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
-    padding: 0px 105px;
     height: 60px;
-    margin-top: 50px;
+    margin: 50px auto 0px;
+  
+    @include media("<s") {
+      width: 100%;
+      padding: 12px;
+    }
+    @include media(">=s") {
+      width: 540px;
+    }
+    @include media(">=m") {
+      width: 720px;
+    }
+    @include media(">=l") {
+      width: 960px;
+    }
+    @include media(">=xl") {
+      width: 1140px;
+    }
+    @include media(">xxl") {
+      width: 1320px;
+    }
 }
 
 .footer-copyright{
