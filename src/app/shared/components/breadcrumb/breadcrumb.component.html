@@ -1,5 +1,8 @@
 <div class="location-path-container">
   <ul class="breadcrumb">
-      <li *ngFor="let breadcrumb of breadcrumbs"><a routerLink="{{breadcrumb.path}}">{{breadcrumb.text}}</a></li>
+      <li *ngFor="let breadcrumb of breadcrumbs; let i = index">
+        <div *ngIf="i != 0" class="arrow">></div>
+        <a routerLink="{{breadcrumb.path}}">{{breadcrumb.text}}</a>
+      </li>
   </ul>
 </div>
