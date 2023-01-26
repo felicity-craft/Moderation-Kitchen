@@ -2,7 +2,6 @@
     background-color: #e5e5e5;
     opacity: 0.6;
     border-radius: 13px;
-    // width: calc(100% - 60px);
     align-content: center;
     justify-content: space-evenly;
     padding: 20px;
@@ -19,5 +18,9 @@ mat-option a {
 }
 
 :host{
-    width: calc(100% - 60px);
+    width: 100%;
+}
+
+mat-form-field {
+    width: 250px !important;
 }
