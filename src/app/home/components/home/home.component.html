@@ -1,4 +1,4 @@
-<app-page-container class="hidden sm:block">
+<app-page-container class="hidden md:flex">
     <div class="home-container">
         <ng-container *ngIf="(featuredRecipes | async) as recipes; else loading">
             <div class="feature-image-container" *ngFor="let recipe of recipes">
@@ -11,7 +11,7 @@
     </div> 
 </app-page-container>
 
-<app-page-container class="sm:hidden">
+<app-page-container class="flex md:hidden">
     <!-- mobile feature images -->
     <div class="mobile-home-container flex flex-col">
         <ng-container *ngIf="(featuredRecipes | async) as recipes; else loading">
