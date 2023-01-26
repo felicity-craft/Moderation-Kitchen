@@ -23,10 +23,14 @@
     justify-content: left;
 }
 
-p{
+.card-caption{
     font-size: 16px;
     text-transform: capitalize;
     text-align: left;
     font-weight: 100;
     margin: 8px 0px;
+    max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

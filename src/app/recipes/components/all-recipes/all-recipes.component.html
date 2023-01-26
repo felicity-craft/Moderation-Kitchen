@@ -1,7 +1,7 @@
 <app-page-container>
   <h2>All recipes</h2>
   <ng-container *ngIf="allRecipes | async as recipes; else loading">
-    <div class="recipe-image-container">
+    <div class="recipe-image-container flex flex-col md:flex-row">
       <app-card
         *ngFor="let recipe of recipes"
         [src]="recipe.heroImage"
